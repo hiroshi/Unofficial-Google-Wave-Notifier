@@ -1,15 +1,26 @@
-= Unofficial Google Wave Notifier for mac
+Unofficial Google Wave Notifier for mac
+=======================================
 
 This is a Mac OS X menubar notification application. 
 It notifies unread blips (messages) at your account of Google Wave,
 like (official) Google Notifier does for GMail and Calender.
 
 
-== Notes for feature compatibility against Google Wave
+Acknowledgement
+---------------
+I learned how to get inbox information at wave.google.com from
+"Google Wave Add-on for Firefox" by Chad Smith
+http://thatsmith.com/2009/10/google-wave-add-on-for-firefox
+I thank him.
+
+
+Notes for feature compatibility against Google Wave
+---------------------------------------------------
 If they change the interface I use to access Google Wave, this app will fail.
 
 
-== Anatomy (for Developer)
+Anatomy (for Developer)
+-----------------------
 The outer part of the application is written in Objective-C using Cocoa Framework as usual.
 However, the inner part which accessing to the Google Wave is written in Ruby.
 I call the former "the app" and the later "the script".
@@ -23,7 +34,8 @@ That' it.
 I mean that the core part is written in ruby, so you can use it for windows or other (if ruby itself is not a problem).
 
 
-== License (MIT License)
+License (MIT License)
+---------------------
 Copyright (c) 2009 Hiroshi Saito
 
 Permission is hereby granted, free of charge, to any person
