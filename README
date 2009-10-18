@@ -1,0 +1,48 @@
+= Unofficial Google Wave Notifier for mac
+
+This is a Mac OS X menubar notification application. 
+It notifies unread blips (messages) at your account of Google Wave,
+like (official) Google Notifier does for GMail and Calender.
+
+
+== Notes for feature compatibility against Google Wave
+If they change the interface I use to access Google Wave, this app will fail.
+
+
+== Anatomy (for Developer)
+The outer part of the application is written in Objective-C using Cocoa Framework as usual.
+However, the inner part which accessing to the Google Wave is written in Ruby.
+I call the former "the app" and the later "the script".
+
+The app periodically executes the script as a subprocess, like a following diagram.
+
+1. app --(execute subprocess)--> script --(https request)--> Google Wave
+2. app <--(plist via pipe)-- script <--(html including json via https response)-- Google Wave
+That' it.
+
+I mean that the core part is written in ruby, so you can use it for windows or other (if ruby itself is not a problem).
+
+
+== License (MIT License)
+Copyright (c) 2009 Hiroshi Saito
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
