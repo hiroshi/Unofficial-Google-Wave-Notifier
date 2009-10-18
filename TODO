@@ -1,0 +1,14 @@
+= TODO
+
+== 0.2
+* moderate interval time from 1 min to 5 min.
+* preferences: path to ruby
+
+== 0.3 or later
+* show title and unread blip count of waves as menu item like gmail notifier
+* menubar icon (four color "W")
+
+== someday/maybe
+* preferences: interval time for check (should limit minimum of 5 min).
+* automatic update check for the application itself
+* support http proxy (if someone need it)

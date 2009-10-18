@@ -1,7 +1,8 @@
 = Change Log
 
 == 0.2
-* Added README and CHANGELOG
+* Added README, CHANGELOG and TODO
+* menu item: Go to Inbox
 
 == 0.1 (2009-10-18)
 * The first release

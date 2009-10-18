@@ -23,6 +23,7 @@
 - (void)setPassword:(NSString *)value;
 
 - (IBAction)openPreferences:(id)sender;
+- (IBAction)goToInbox:(id)sender;
 @end
 
 @implementation AppDelegate
@@ -180,6 +181,12 @@
     [preferencesWindow makeKeyAndOrderFront: sender];
     [preferencesWindow setLevel: NSTornOffMenuWindowLevel];
 }
+
+- (IBAction)goToInbox:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://wave.google.com/wave/"]];
+}
+
 
 // for Cocoa binding key path
 // NOTE: Key of Info.plist is not as is. (e.g. "Bundle version" => "CFBundleVersion")
