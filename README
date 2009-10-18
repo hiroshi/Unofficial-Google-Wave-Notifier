@@ -6,6 +6,12 @@ It notifies unread blips (messages) at your account of Google Wave,
 like (official) Google Notifier does for GMail and Calender.
 
 
+Supported environments
+----------------------
+* Mac OS X Leopard (intel and ppc) # my own platforms, so I test on them.
+* Mac OS X Snow Leopard (32bit and 64bit) # I have a report from my friend.
+
+
 Acknowledgement
 ---------------
 I learned how to get inbox information at wave.google.com from
