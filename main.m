@@ -23,8 +23,6 @@
 - (void)setPassword:(NSString *)value;
 
 - (IBAction)openPreferences:(id)sender;
-
-//- (NSDictionary *)infoDictionary;
 @end
 
 @implementation AppDelegate
@@ -183,10 +181,12 @@
     [preferencesWindow setLevel: NSTornOffMenuWindowLevel];
 }
 
-// - (NSDictionary *)infoDictionary
-// {
-//     return [[NSBundle mainBundle] infoDictionary];
-// }
+// for Cocoa binding key path
+// NOTE: Key of Info.plist is not as is. (e.g. "Bundle version" => "CFBundleVersion")
+- (NSDictionary *)infoDictionary
+{
+    return [[NSBundle mainBundle] infoDictionary];
+}
 @end
 
 
