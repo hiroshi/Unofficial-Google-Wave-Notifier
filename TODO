@@ -12,3 +12,4 @@
 * preferences: interval time for check (should limit minimum of 5 min).
 * automatic update check for the application itself
 * support http proxy (if someone need it)
+* ESC key to close preferences window
