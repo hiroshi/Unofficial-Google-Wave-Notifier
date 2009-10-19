@@ -37,7 +37,7 @@
     // check once first
     [self checkNotificationAsync: self];
     // schedule checkNotification
-    [NSTimer scheduledTimerWithTimeInterval: 1.0 * 60 // FIXME: 
+    [NSTimer scheduledTimerWithTimeInterval: 5.0 * 60 // TODO: preferences
              target: self
              selector: @selector(checkNotification:)
              userInfo: nil
