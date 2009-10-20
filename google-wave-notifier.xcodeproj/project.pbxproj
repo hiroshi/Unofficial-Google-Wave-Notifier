@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684366D91089F48B00D5DA11 /* Security.framework */; };
+		68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CD8D108D7DCB003A3A72 /* Defaults.plist */; };
 		68F71BC010894B0100910DDB /* google-wave-notifier.rb in Resources */ = {isa = PBXBuildFile; fileRef = 68F71BBF10894B0100910DDB /* google-wave-notifier.rb */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -25,6 +26,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* google-wave-notifier_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "google-wave-notifier_Prefix.pch"; sourceTree = "<group>"; };
 		684366D91089F48B00D5DA11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		68D4CD8D108D7DCB003A3A72 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		68F71BBF10894B0100910DDB /* google-wave-notifier.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "google-wave-notifier.rb"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Unofficial Google Wave Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unofficial Google Wave Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 			children = (
 				68F71BBF10894B0100910DDB /* google-wave-notifier.rb */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				68D4CD8D108D7DCB003A3A72 /* Defaults.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 			);
@@ -164,6 +167,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				68F71BC010894B0100910DDB /* google-wave-notifier.rb in Resources */,
+				68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

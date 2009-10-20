@@ -24,11 +24,18 @@
 
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)goToInbox:(id)sender;
+- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
 @end
 
 @implementation AppDelegate
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    // defaults
+    NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Defaults" ofType: @"plist"]];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: defaultsDict];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues: defaultsDict];
+
+    // menubar item
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     [statusItem setTitle: @"w"];
     [statusItem setHighlightMode: YES];
@@ -56,8 +63,9 @@
 
 - (void)checkNotification:(NSTimer*)theTimer
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // first of all, check keychain for password
-    NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey: @"Email"];
+    NSString *email = [defaults objectForKey: @"Email"];
     if (!email)
     {
         [statusItem setTitle: @"w(x)"];
@@ -71,11 +79,12 @@
     }
     //NSLog(@"e: %@, p: %@\n", email, password);
 
-    NSLog(@"checkNotification: start...\n");
+    NSString *pathToRuby = [defaults objectForKey: @"PathToRuby"];
+    NSLog(@"checkNotification: start. (pathToRuby: %@)\n", pathToRuby);
     NSTask *task = [[NSTask alloc] init];
     NSPipe *pipe = [NSPipe pipe];
     NSFileHandle *handle = [pipe fileHandleForReading];
-    [task setLaunchPath: @"/usr/bin/ruby"];
+    [task setLaunchPath: pathToRuby];
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
     //NSLog(@"rbPath: %@\n", rbPath);
     [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, nil]];
@@ -187,7 +196,16 @@
     [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://wave.google.com/wave/"]];
 }
 
-
+- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender
+{
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+    //[[defaultsController values] removeObjectForKey: @"PathToRuby"];
+    //[[defaultsController values] setNilValueForKey: @"PathToRuby"];
+    //[[defaultsController values] setValue: @"" forKey: @"PathToRuby"];
+//    [[defaultsController defaults] removeObjectForKey: @"PathToRuby"];
+}
+    
 // for Cocoa binding key path
 // NOTE: Key of Info.plist is not as is. (e.g. "Bundle version" => "CFBundleVersion")
 - (NSDictionary *)infoDictionary

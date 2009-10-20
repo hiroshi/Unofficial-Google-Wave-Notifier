@@ -4,6 +4,7 @@
 * Added README, CHANGELOG and TODO
 * menu item: Go to Inbox
 * moderate interval time from 1 min to 5 min.
+* advanced preferences: path to ruby
 
 == 0.1 (2009-10-18)
 * The first release

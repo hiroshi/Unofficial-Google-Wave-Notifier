@@ -1,8 +1,5 @@
 = TODO
 
-== 0.2
-* preferences: path to ruby
-
 == 0.3 or later
 * show title and unread blip count of waves as menu item like gmail notifier
 * menubar icon (four color "W")
