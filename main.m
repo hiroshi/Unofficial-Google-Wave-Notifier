@@ -37,7 +37,7 @@
 
     // menubar item
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
-    [statusItem setTitle: @"w"];
+    [statusItem setImage: [NSImage imageNamed: @"wave.png"]];
     [statusItem setHighlightMode: YES];
     [statusItem setMenu: menu];
 
@@ -68,13 +68,13 @@
     NSString *email = [defaults objectForKey: @"Email"];
     if (!email)
     {
-        [statusItem setTitle: @"w(x)"];
+        [statusItem setTitle: @"x"];
         return;
     }
     NSString *password = [self password];
     if (!password)
     {
-        [statusItem setTitle: @"w(x)"];
+        [statusItem setTitle: @"x"];
         return;
     }
     //NSLog(@"e: %@, p: %@\n", email, password);
@@ -97,7 +97,7 @@
     [task waitUntilExit];
     if ([task terminationStatus] != 0)
     {
-        [statusItem setTitle: @"w(x)"];
+        [statusItem setTitle: @"x"];
         return;
     }
 
@@ -117,11 +117,11 @@
         id count = [plist objectForKey: @"Total Unread Count"];
         if ([count isEqualToNumber: [NSNumber numberWithInt: 0]])
         {
-            [statusItem setTitle: @"w"];
+            [statusItem setTitle: @""];
         }   
         else
         {
-            [statusItem setTitle: [NSString stringWithFormat: @"w(%@)", count]];
+            [statusItem setTitle: [NSString stringWithFormat: @"%@", count]];
         }
         NSLog(@"checkNotification: done. (count: %@)\n", count);
     }
