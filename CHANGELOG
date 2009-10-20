@@ -1,6 +1,6 @@
 = Change Log
 
-== 0.2
+== 0.2 (2009-10-20)
 * Added README, CHANGELOG and TODO
 * menu item: Go to Inbox
 * moderate interval time from 1 min to 5 min.
