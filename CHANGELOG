@@ -1,8 +1,9 @@
 = Change Log
 
 
-== 0.3
-* menubar icon (four color "W")
+== 0.3 (2009-10-21)
+* status item icon (four color "W")
+* show title and unread blip count of waves as menu item like gmail notifier
 
 == 0.2 (2009-10-20)
 * Added README, CHANGELOG and TODO

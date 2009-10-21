@@ -7,6 +7,10 @@
 //
 #import <Cocoa/Cocoa.h>
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
+enum {
+    MenuItemTagUnreadInsert = 1,
+    MenuItemTagUnread = 2,
+};
 
 @interface AppDelegate : NSObject
 {
@@ -114,16 +118,38 @@
     else
     {
         //id count = [[[plist objectForKey: @"Items"] objectAtIndex: 0] objectForKey: @"Unread Count"];
-        id count = [plist objectForKey: @"Total Unread Count"];
-        if ([count isEqualToNumber: [NSNumber numberWithInt: 0]])
+        // First, remove previous unreads
+        NSMenuItem *menuItem = nil;
+        while (menuItem = [menu itemWithTag: MenuItemTagUnread])
+        {
+            [menu removeItem: menuItem];
+        }
+        // remove or replace total unread count as menubar title
+        id totalCount = [plist objectForKey: @"Total Unread Count"];
+        if ([totalCount isEqualToNumber: [NSNumber numberWithInt: 0]])
         {
             [statusItem setTitle: @""];
         }   
         else
         {
-            [statusItem setTitle: [NSString stringWithFormat: @"%@", count]];
+            [statusItem setTitle: [NSString stringWithFormat: @"%@", totalCount]];
+            // Add new unreads
+            NSInteger insertIndex = [menu indexOfItemWithTag: MenuItemTagUnreadInsert] + 1;
+            //   separator
+            NSMenuItem *separator = [NSMenuItem separatorItem];
+            [separator setTag: MenuItemTagUnread];
+            [menu insertItem: separator atIndex: insertIndex];
+            //   unread waves
+            NSEnumerator *enumerator = [[plist objectForKey: @"Items"] objectEnumerator];
+            NSDictionary *item = nil;
+            while (item = [enumerator nextObject])
+            {
+                NSString *title = [NSString stringWithFormat: @"%@ (%@)", [item objectForKey: @"Title"], [item objectForKey: @"Unread Count"]];
+                NSMenuItem *menuItem = [menu insertItemWithTitle: title action: nil keyEquivalent: @"" atIndex: insertIndex];
+                [menuItem setTag: MenuItemTagUnread];
+            }
         }
-        NSLog(@"checkNotification: done. (count: %@)\n", count);
+        NSLog(@"checkNotification: done. (total count: %@)\n", totalCount);
     }
 }
 
