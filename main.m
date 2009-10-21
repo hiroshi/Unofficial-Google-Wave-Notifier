@@ -94,10 +94,17 @@ enum {
     NSFileHandle *handle = [pipe fileHandleForReading];
     [task setLaunchPath: pathToRuby];
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
-    //NSLog(@"rbPath: %@\n", rbPath);
     [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, nil]];
     [task setStandardOutput: pipe];
-    [task launch];
+    @try {
+        [task launch];
+    }
+    //NOTE: will catch NSInvalidArgumentException when launchPath not accesible
+    @catch (NSException *e) {
+        NSLog(@"launch failed: %@: %@", [e name], [e reason]);
+        [statusItem setTitle: @"x"];
+        return;
+    }
 
     NSData *data = [handle readDataToEndOfFile];
     //NSLog([[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding]);
