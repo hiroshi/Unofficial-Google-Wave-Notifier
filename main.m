@@ -38,6 +38,7 @@ enum {
     NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Defaults" ofType: @"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultsDict];
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues: defaultsDict];
+    //NSLog(@"appliesImmediately: %d\n", [[NSUserDefaultsController sharedUserDefaultsController] appliesImmediately]);
 
     // menubar item
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
@@ -57,6 +58,9 @@ enum {
 
 - (void)checkNotificationAsync:(id)sender
 {
+    // NOTE: Clicking button and performeClose will not end editing the first responder text field. So, force to end editing it.
+    [preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
+
     [preferencesWindow performClose: sender];
     [NSTimer scheduledTimerWithTimeInterval: 1.0
              target: self
