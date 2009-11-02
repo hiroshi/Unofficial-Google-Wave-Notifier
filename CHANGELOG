@@ -1,6 +1,9 @@
 = Change Log
 
 
+== 0.4
+* Open a specific wave immediately by clicking a wave in the menu
+
 == 0.3 (2009-10-21)
 * BUG FIX: show "x" in case of inaccesible ruby path
 * BUG FIX: Clicking OK button will not save a value in the focused text field to user default (press enter key is OK).

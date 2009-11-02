@@ -1,15 +1,17 @@
 = TODO
 
 == 0.4
-
+* display "Checked N min ago" biside "Check Now" like "Google Notifier"
 
 == someday/maybe
+* checking for online members
+* contains participant names in a title of unread item
+
 * annoyance: freeze while checking status against wave.google.com inspite of useing NSTimer. Need to use thread?
 
 * add link to CHANGELOG and Downloads on github beside version number in the preferences window
 
 * give some infomation with Tooltip
-* display "Checked N min ago" biside "Check Now" like "Google Notifier"
 * ignore filter for waves (and users)
 * preferences: interval time for check (should limit minimum of 5 min)
 * preferences: alternative option for the number displayed at status bar (number of unread blips or unread waves)

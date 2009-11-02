@@ -28,6 +28,7 @@ enum {
 
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)goToInbox:(id)sender;
+- (IBAction)goToWave:(id)sender;
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
 @end
 
@@ -156,7 +157,8 @@ enum {
             while (item = [enumerator nextObject])
             {
                 NSString *title = [NSString stringWithFormat: @"%@ (%@)", [item objectForKey: @"Title"], [item objectForKey: @"Unread Count"]];
-                NSMenuItem *menuItem = [menu insertItemWithTitle: title action: nil keyEquivalent: @"" atIndex: insertIndex];
+                NSMenuItem *menuItem = [menu insertItemWithTitle: title action: @selector(goToWave:) keyEquivalent: @"" atIndex: insertIndex];
+                [menuItem setRepresentedObject: [item objectForKey: @"URL"]];
                 [menuItem setTag: MenuItemTagUnread];
             }
         }
@@ -231,6 +233,12 @@ enum {
 - (IBAction)goToInbox:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://wave.google.com/wave/"]];
+}
+
+- (IBAction)goToWave:(id)sender
+{
+    NSString *url = [sender representedObject];
+    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
 }
 
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender

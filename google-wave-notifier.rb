@@ -23,6 +23,14 @@ module GoogleWave
         @hash = hash
       end
 
+      def wave_id
+        @hash["1"]
+      end
+
+      def url
+        "https://wave.google.com/wave/#restored:wave:" + self.wave_id.sub("+", "%252B")
+      end
+
       def title
         @hash["9"]["1"]
       end
@@ -137,6 +145,10 @@ if $0 == __FILE__
         <string>#{item.title}</string>
         <key>Unread Count</key>
         <integer>#{item.unread_count}</integer>
+        <key>Wave ID</key>
+        <string>#{item.wave_id}</string>
+        <key>URL</key>
+        <string>#{item.url}</string>
       </dict>
     ITEM
   end
