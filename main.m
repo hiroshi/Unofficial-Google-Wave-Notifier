@@ -10,6 +10,7 @@
 enum {
     MenuItemTagUnreadInsert = 1,
     MenuItemTagUnread = 2,
+    MenuItemTagCheckNow = 3,
 };
 
 @interface AppDelegate : NSObject
@@ -17,11 +18,13 @@ enum {
     IBOutlet id menu;
     IBOutlet id preferencesWindow;
     NSStatusItem *statusItem;
+    NSDate *checkedDate;
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 
 - (IBAction)checkNotificationAsync:(id)sender;
 - (void)checkNotification:(NSTimer*)theTimer;
+- (void)updateSinceChecked:(NSTimer*)theTimer;
 
 - (NSString *)password;
 - (void)setPassword:(NSString *)value;
@@ -49,6 +52,12 @@ enum {
 
     // check once first
     [self checkNotificationAsync: self];
+    // schedule updateSinceChecked
+    [NSTimer scheduledTimerWithTimeInterval: 60
+             target: self
+             selector: @selector(updateSinceChecked:)
+             userInfo: nil
+             repeats: YES];
     // schedule checkNotification
     [NSTimer scheduledTimerWithTimeInterval: 5.0 * 60 // TODO: preferences
              target: self
@@ -72,6 +81,9 @@ enum {
 
 - (void)checkNotification:(NSTimer*)theTimer
 {
+    checkedDate = [NSDate dateWithTimeIntervalSinceNow: -2.0]; // ensure that first call of scheduled updateSinceChecked is called a minutes later
+    [self updateSinceChecked: NULL];
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // first of all, check keychain for password
     NSString *email = [defaults objectForKey: @"Email"];
@@ -164,6 +176,33 @@ enum {
         }
         NSLog(@"checkNotification: done. (total count: %@)\n", totalCount);
     }
+}
+
+- (void)updateSinceChecked:(NSTimer*)theTimer
+{
+    NSFont *font = [NSFont menuBarFontOfSize: 0];
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionaryWithObject: font forKey: NSFontAttributeName];
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString: @"Check Now" attributes: attrs];
+    [attrs setObject: [NSColor grayColor] forKey: NSForegroundColorAttributeName];
+    [attrs setObject: [NSFont menuBarFontOfSize: [font pointSize] - 2] forKey: NSFontAttributeName];
+
+    NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate: checkedDate];
+    NSLog(@"updateSinceChecked: seconds: %f", seconds);
+    NSString *appendTitle = NULL;
+    if (seconds < 60)
+    {
+        appendTitle = @" - Checked less than 1 min ago";
+    }
+    else if (seconds < 60 * 60)
+    {
+        appendTitle = [NSString stringWithFormat: @" - Checked %d min ago", (int)(seconds / 60)];
+    }
+    else // more than an hour
+    {
+        appendTitle = [NSString stringWithFormat: @" - Checked %d h ago", (int)(seconds / (60 * 60))];
+    }
+    [title appendAttributedString: [[NSAttributedString alloc] initWithString: appendTitle attributes: attrs]];
+    [[menu itemWithTag: MenuItemTagCheckNow] setAttributedTitle: title];
 }
 
 - (NSString *)password
