@@ -1,7 +1,7 @@
 = Change Log
 
 
-== 0.4
+== 0.4 (2009-11-3)
 * Open a specific wave immediately by clicking a wave in the menu
 * Display "Checked N min ago" biside "Check Now" like "Google Notifier"
 

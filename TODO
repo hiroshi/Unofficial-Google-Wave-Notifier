@@ -3,6 +3,8 @@
 == 0.5
 
 == someday/maybe
+* don't count currently editing wave as an unread
+
 * checking for online members
 * contains participant names in a title of unread item
 
