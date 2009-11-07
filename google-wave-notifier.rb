@@ -93,8 +93,8 @@ module GoogleWave
         case res = http.request(req)
         when Net::HTTPSuccess
           @login_info = res.body.split(/\n/).inject({}){|h,l| k,v = l.split("="); h.update(k => v)}
-        else # FIXME
-          
+        else
+          raise "#{res.inspect}: #{res.body}"
         end
       end
     end
