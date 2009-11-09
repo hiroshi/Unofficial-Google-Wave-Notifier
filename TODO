@@ -1,6 +1,9 @@
 = TODO
 
-== 0.5
+== 0.4.X or 0.5
+* preferences: alternative browser setting to default one (my be Safari) for opening InBox and unread waves
+
+* OAuth for not hundling your password (If I find a way to use OAuth for wave.google.com)
 
 == someday/maybe
 * don't count currently editing wave as an unread
