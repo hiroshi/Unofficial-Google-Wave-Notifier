@@ -8,7 +8,7 @@
          <item>
             <title>Release 0.4.2</title>
             <sparkle:releaseNotesLink>
-              http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/CHANGELOG
+              http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
             </sparkle:releaseNotesLink>
             <pubDate>Tue, 24 Nov 2009 00:42:58 +0900</pubDate>
             <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.4.2.zip" sparkle:version="0.4.2" length="1303076" type="application/octet-stream" sparkle:dsaSignature="MCwCFGo+wzUvv52gZPW+9fmShN+rWq7aAhQn7a1UNeG9l+asDPh7YZyl99rwZQ==" />

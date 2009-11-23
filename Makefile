@@ -18,7 +18,7 @@ appcast:
          <item>\n\
             <title>Release $(VERSION)</title>\n\
             <sparkle:releaseNotesLink>\n\
-      	      http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/CHANGELOG\n\
+      	      http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG\n\
  	    </sparkle:releaseNotesLink>\n\
             <pubDate>$(DATE)</pubDate>\n\
             <enclosure url=\"http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/$(ZIP)\" sparkle:version=\"$(VERSION)\" length=\"$(LENGTH)\" type=\"application/octet-stream\" sparkle:dsaSignature=\"$(DSA_SIGN)\" />\n\
