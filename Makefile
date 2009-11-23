@@ -11,7 +11,7 @@ run:
 	open build/Release/$(APP)
 
 zip: all
-	(cd build/Release; zip -r $(ZIP) $(APP))
+	(cd build/Release; rm -f $(ZIP); zip -r $(ZIP) $(APP))
 
 appcast:
 	@echo "\
