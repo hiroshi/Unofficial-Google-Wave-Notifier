@@ -11,7 +11,7 @@
 		6832ADCA10B9330C002BC3E2 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6832ADC910B9330C002BC3E2 /* Sparkle.framework */; };
 		6832ADE210B933B4002BC3E2 /* Sparkle.framework in Copy bundle frameworks */ = {isa = PBXBuildFile; fileRef = 6832ADC910B9330C002BC3E2 /* Sparkle.framework */; };
 		6832ADE710B96D91002BC3E2 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADE610B96D91002BC3E2 /* dsa_pub.pem */; };
-		6832ADF810B9939D002BC3E2 /* Updates By Sparkle.psd in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADF710B9939D002BC3E2 /* Updates By Sparkle.psd */; };
+		6832ADF810B9939D002BC3E2 /* Updates By Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */; };
 		684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684366D91089F48B00D5DA11 /* Security.framework */; };
 		68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CD8D108D7DCB003A3A72 /* Defaults.plist */; };
 		68D4CDAD108DA7D4003A3A72 /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CDAC108DA7D4003A3A72 /* wave.png */; };
@@ -46,7 +46,7 @@
 		32CA4F630368D1EE00C91783 /* google-wave-notifier_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "google-wave-notifier_Prefix.pch"; sourceTree = "<group>"; };
 		6832ADC910B9330C002BC3E2 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		6832ADE610B96D91002BC3E2 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Sparkle/dsa_pub.pem; sourceTree = "<group>"; };
-		6832ADF710B9939D002BC3E2 /* Updates By Sparkle.psd */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Updates By Sparkle.psd"; path = "Sparkle/Updates By Sparkle.psd"; sourceTree = "<group>"; };
+		6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Updates By Sparkle.png"; path = "Sparkle/Updates By Sparkle.png"; sourceTree = "<group>"; };
 		684366D91089F48B00D5DA11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		68D4CD8D108D7DCB003A3A72 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		68D4CDAC108DA7D4003A3A72 /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6832ADF710B9939D002BC3E2 /* Updates By Sparkle.psd */,
+				6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */,
 				6832ADE610B96D91002BC3E2 /* dsa_pub.pem */,
 				68D4CDAC108DA7D4003A3A72 /* wave.png */,
 				68F71BBF10894B0100910DDB /* google-wave-notifier.rb */,
@@ -199,7 +199,7 @@
 				68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */,
 				68D4CDAD108DA7D4003A3A72 /* wave.png in Resources */,
 				6832ADE710B96D91002BC3E2 /* dsa_pub.pem in Resources */,
-				6832ADF810B9939D002BC3E2 /* Updates By Sparkle.psd in Resources */,
+				6832ADF810B9939D002BC3E2 /* Updates By Sparkle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
