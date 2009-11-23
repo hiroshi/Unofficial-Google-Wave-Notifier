@@ -6,7 +6,7 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 0.5</title>
+            <title>Release 0.5</title>
 	    <sparkle:releaseNotesLink>
 	      http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/CHANGELOG
 	    </sparkle:releaseNotesLink>
