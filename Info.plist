@@ -25,7 +25,7 @@
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 	<key>SUFeedURL</key>
-	<string>http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/appcast.xml</string>
+	<string>http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/Sparkle/appcast.xml</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
