@@ -1,17 +1,26 @@
 = TODO
+== Instruction for updating to new version
+0. commit task level modification before bump up to new version
+1. modify "Bundle version" in the Info.plist
+2. `make zip appcast VERSION=X.X`
+3. copy & paste XML snipet insert into Sparkle/appcast.xml, the higher the newer
+4. `git commit` changes and `git push`
+5. upload the zip archive to github
+6. `git tag X.X` and `git push origin X.X`
 
-== 0.4.X or 0.5
-* preferences: alternative browser setting to default one (my be Safari) for opening InBox and unread waves
 
-* OAuth for not hundling your password (If I find a way to use OAuth for wave.google.com)
+== 0.5?
+* fancy icons (gray and color) [#2]
+* preferences: alternative browser setting to default one (maybe Safari) for opening InBox and unread waves [#3]
 
-== someday/maybe
+
+== Someday/maybe
 * don't count currently editing wave as an unread
 
 * checking for online members
 * contains participant names in a title of unread item
 
-* annoyance: freeze while checking status against wave.google.com inspite of useing NSTimer. Need to use thread?
+* annoyance: avoid freezing while checking status against wave.google.com inspite of useing NSTimer. Need to use thread?
 
 * add link to CHANGELOG and Downloads on github beside version number in the preferences window
 
@@ -19,7 +28,9 @@
 * ignore filter for waves (and users)
 * preferences: interval time for check (should limit minimum of 5 min)
 * preferences: alternative option for the number displayed at status bar (number of unread blips or unread waves)
-* automatic update check for the application itself
 
 * support http proxy (if someone need it)
 * ESC key to close preferences window
+
+== Needed, but blocked
+* OAuth for not hundling your password (If I find a way to use OAuth for wave.google.com)

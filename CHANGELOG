@@ -1,5 +1,8 @@
 = Change Log
 
+== 0.4.2 (2009-11-24)
+* integrated with Sparkle self updater [#5, #7]
+
 == 0.4.1 (2009-11-7)
 * Better error messages when login failed (in Colsole.app)
 
