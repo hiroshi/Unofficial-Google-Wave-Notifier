@@ -1,11 +1,11 @@
 = TODO
-== Instruction for updating to new version
+== Instruction for releasing new version
 0. commit task level modification before bump up to new version
 1. modify "Bundle version" in the Info.plist
 2. `make zip appcast VERSION=X.X`
 3. copy & paste XML snipet insert into Sparkle/appcast.xml, the higher the newer
-4. `git commit` changes and `git push`
-5. upload the zip archive to github
+4. upload the zip archive to github (download and test it)
+5. `git commit` changes and `git push` (publish appcast.xml)
 6. `git tag X.X` and `git push origin X.X`
 
 
