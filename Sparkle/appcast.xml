@@ -7,6 +7,14 @@
       <language>en</language>
          <item>
   adding: Unofficial Google Wave Notifier.app/Contents/Resources/wave.png (stored 0%)
+        <item>
+            <title>Release 0.4.3</title>
+            <sparkle:releaseNotesLink>
+              http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
+            </sparkle:releaseNotesLink>
+            <pubDate>Fri, 27 Nov 2009 00:33:51 +0900</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.4.3.zip" sparkle:version="0.4.3" length="683937" type="application/octet-stream" sparkle:dsaSignature="MC4CFQDTWsdRYmBnMOTHNmkKjIPdMAhxzAIVALQIxgJwG8OpeaFqV18jz6+5on0E" />
+         </item>
          <item>
             <title>Release 0.4.2</title>
             <sparkle:releaseNotesLink>

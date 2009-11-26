@@ -2,15 +2,16 @@
 == Instruction for releasing new version
 0. commit task level modification before bump up to new version
 1. modify "Bundle version" in the Info.plist
-2. `make zip appcast VERSION=X.X`
-3. copy & paste XML snipet insert into Sparkle/appcast.xml, the higher the newer
-4. upload the zip archive to github (download and test it)
-5. `git commit` changes and `git push` (publish appcast.xml)
-6. `git tag X.X` and `git push origin X.X`
+2. update CHANGELOG (maybe TODO too)
+3. `make zip appcast VERSION=X.X`
+4. copy & paste XML snipet insert into Sparkle/appcast.xml, the higher the newer
+5. upload the zip archive to github
+6. `git commit` changes and `git push` (publish appcast.xml)
+7. Check for update from the last version
+8. `git tag X.X` and `git push origin X.X`
 
 
 == 0.5?
-* fancy icons (gray and color) [#2]
 * preferences: alternative browser setting to default one (maybe Safari) for opening InBox and unread waves [#3]
 
 
