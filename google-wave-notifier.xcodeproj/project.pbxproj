@@ -15,6 +15,8 @@
 		684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684366D91089F48B00D5DA11 /* Security.framework */; };
 		68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CD8D108D7DCB003A3A72 /* Defaults.plist */; };
 		68D4CDAD108DA7D4003A3A72 /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CDAC108DA7D4003A3A72 /* wave.png */; };
+		68F2EC9B10BEC4B8009C5A3D /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F2EC9910BEC4B8009C5A3D /* gray.png */; };
+		68F2EC9C10BEC4B8009C5A3D /* color.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F2EC9A10BEC4B8009C5A3D /* color.png */; };
 		68F71BC010894B0100910DDB /* google-wave-notifier.rb in Resources */ = {isa = PBXBuildFile; fileRef = 68F71BBF10894B0100910DDB /* google-wave-notifier.rb */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -50,6 +52,8 @@
 		684366D91089F48B00D5DA11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		68D4CD8D108D7DCB003A3A72 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		68D4CDAC108DA7D4003A3A72 /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
+		68F2EC9910BEC4B8009C5A3D /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
+		68F2EC9A10BEC4B8009C5A3D /* color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color.png; sourceTree = "<group>"; };
 		68F71BBF10894B0100910DDB /* google-wave-notifier.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "google-wave-notifier.rb"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Unofficial Google Wave Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unofficial Google Wave Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +132,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				68F2EC9910BEC4B8009C5A3D /* gray.png */,
+				68F2EC9A10BEC4B8009C5A3D /* color.png */,
 				6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */,
 				6832ADE610B96D91002BC3E2 /* dsa_pub.pem */,
 				68D4CDAC108DA7D4003A3A72 /* wave.png */,
@@ -200,6 +206,8 @@
 				68D4CDAD108DA7D4003A3A72 /* wave.png in Resources */,
 				6832ADE710B96D91002BC3E2 /* dsa_pub.pem in Resources */,
 				6832ADF810B9939D002BC3E2 /* Updates By Sparkle.png in Resources */,
+				68F2EC9B10BEC4B8009C5A3D /* gray.png in Resources */,
+				68F2EC9C10BEC4B8009C5A3D /* color.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = ./Sparkle;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -294,6 +303,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = ./Sparkle;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

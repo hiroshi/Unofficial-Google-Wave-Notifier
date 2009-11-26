@@ -25,6 +25,7 @@ enum {
 - (IBAction)checkNotificationAsync:(id)sender;
 - (void)checkNotification:(NSTimer*)theTimer;
 - (void)updateSinceChecked:(NSTimer*)theTimer;
+- (void)updateStatusItemWithCount:(int)count;
 
 - (NSString *)password;
 - (void)setPassword:(NSString *)value;
@@ -46,7 +47,7 @@ enum {
 
     // menubar item
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
-    [statusItem setImage: [NSImage imageNamed: @"wave.png"]];
+    [statusItem setImage: [NSImage imageNamed: @"color.png"]];
     [statusItem setHighlightMode: YES];
     [statusItem setMenu: menu];
 
@@ -89,13 +90,13 @@ enum {
     NSString *email = [defaults objectForKey: @"Email"];
     if (!email)
     {
-        [statusItem setTitle: @"x"];
+        [self updateStatusItemWithCount: -1];
         return;
     }
     NSString *password = [self password];
     if (!password)
     {
-        [statusItem setTitle: @"x"];
+        [self updateStatusItemWithCount: -1];
         return;
     }
     //NSLog(@"e: %@, p: %@\n", email, password);
@@ -115,7 +116,7 @@ enum {
     //NOTE: will catch NSInvalidArgumentException when launchPath not accesible
     @catch (NSException *e) {
         NSLog(@"launch failed: %@: %@", [e name], [e reason]);
-        [statusItem setTitle: @"x"];
+        [self updateStatusItemWithCount: -1];
         return;
     }
 
@@ -125,7 +126,7 @@ enum {
     [task waitUntilExit];
     if ([task terminationStatus] != 0)
     {
-        [statusItem setTitle: @"x"];
+        [self updateStatusItemWithCount: -1];
         return;
     }
 
@@ -149,14 +150,11 @@ enum {
             [menu removeItem: menuItem];
         }
         // remove or replace total unread count as menubar title
-        id totalCount = [plist objectForKey: @"Total Unread Count"];
-        if ([totalCount isEqualToNumber: [NSNumber numberWithInt: 0]])
+        int totalCount = [[plist objectForKey: @"Total Unread Count"] intValue];
+        [self updateStatusItemWithCount: totalCount];
+        if (totalCount > 0)
         {
-            [statusItem setTitle: @""];
-        }   
-        else
-        {
-            [statusItem setTitle: [NSString stringWithFormat: @"%@", totalCount]];
+            [self updateStatusItemWithCount: totalCount];
             // Add new unreads
             NSInteger insertIndex = [menu indexOfItemWithTag: MenuItemTagUnreadInsert] + 1;
             //   separator
@@ -174,7 +172,7 @@ enum {
                 [menuItem setTag: MenuItemTagUnread];
             }
         }
-        NSLog(@"checkNotification: done. (total count: %@)\n", totalCount);
+        NSLog(@"checkNotification: done. (total count: %d)\n", totalCount);
     }
 }
 
@@ -203,6 +201,26 @@ enum {
     }
     [title appendAttributedString: [[NSAttributedString alloc] initWithString: appendTitle attributes: attrs]];
     [[menu itemWithTag: MenuItemTagCheckNow] setAttributedTitle: title];
+}
+
+// count < 0 means failure
+- (void)updateStatusItemWithCount:(int)count
+{
+    if (count > 0)
+    {
+        [statusItem setImage: [NSImage imageNamed: @"color.png"]];
+        [statusItem setTitle: [NSString stringWithFormat: @"%d", count]];
+    }
+    else if(count == 0)
+    {
+        [statusItem setImage: [NSImage imageNamed: @"gray.png"]];
+        [statusItem setTitle: @""];
+    }
+    else
+    {
+        [statusItem setImage: [NSImage imageNamed: @"gray.png"]];
+        [statusItem setTitle: @"x"];
+    }
 }
 
 - (NSString *)password
