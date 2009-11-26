@@ -3,7 +3,7 @@
 //  google-wave-notifier
 //
 //  Created by hiroshi on 09/10/16.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright yakitara.com 2009. All rights reserved.
 //
 #import <Cocoa/Cocoa.h>
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
@@ -12,7 +12,7 @@ enum {
     MenuItemTagUnread = 2,
     MenuItemTagCheckNow = 3,
 };
-
+//TODO: yes, I should separate class implementation from main.m...
 @interface AppDelegate : NSObject
 {
     IBOutlet id menu;
