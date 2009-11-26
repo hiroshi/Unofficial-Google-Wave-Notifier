@@ -5,8 +5,6 @@
       <link>http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/Sparkle/appcast.xml</link>
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
-         <item>
-  adding: Unofficial Google Wave Notifier.app/Contents/Resources/wave.png (stored 0%)
         <item>
             <title>Release 0.4.3</title>
             <sparkle:releaseNotesLink>
