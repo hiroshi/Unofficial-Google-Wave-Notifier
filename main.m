@@ -6,6 +6,8 @@
 //  Copyright yakitara.com 2009. All rights reserved.
 //
 #import <Cocoa/Cocoa.h>
+#import <Growl-WithInstaller/Growl.h>
+#import <Growl-WithInstaller/GrowlApplicationBridge.h>
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
 enum {
     MenuItemTagUnreadInsert = 1,
@@ -13,7 +15,7 @@ enum {
     MenuItemTagCheckNow = 3,
 };
 //TODO: yes, I should separate class implementation from main.m...
-@interface AppDelegate : NSObject
+@interface AppDelegate : NSObject <GrowlApplicationBridgeDelegate>
 {
     IBOutlet id menu;
     IBOutlet id preferencesWindow;
@@ -34,11 +36,17 @@ enum {
 - (IBAction)goToInbox:(id)sender;
 - (IBAction)goToWave:(id)sender;
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
+- (void) growlNotificationWasClicked:(id)clickContext;
 @end
 
 @implementation AppDelegate
+- (void)growlNotificationWasClicked:(id)clickContext
+{
+	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: clickContext]];	
+}
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	[GrowlApplicationBridge setGrowlDelegate:self];
     // defaults
     NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Defaults" ofType: @"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultsDict];
@@ -170,6 +178,15 @@ enum {
                 NSMenuItem *menuItem = [menu insertItemWithTitle: title action: @selector(goToWave:) keyEquivalent: @"" atIndex: insertIndex];
                 [menuItem setRepresentedObject: [item objectForKey: @"URL"]];
                 [menuItem setTag: MenuItemTagUnread];
+				
+				[GrowlApplicationBridge
+				  notifyWithTitle:[NSString stringWithFormat: @"New Wave for %@",[item objectForKey:@"Title"]]
+				  description:[NSString stringWithFormat:@"%@ new Waves have been received",[item objectForKey: @"Unread Count"]]
+				  notificationName:@"NewWave"
+				  iconData: [NSData data]
+				  priority: (signed int)0
+				  isSticky: FALSE
+				  clickContext: [item objectForKey: @"URL"]];
             }
         }
         NSLog(@"checkNotification: done. (total count: %d)\n", totalCount);
@@ -210,6 +227,7 @@ enum {
     {
         [statusItem setImage: [NSImage imageNamed: @"color.png"]];
         [statusItem setTitle: [NSString stringWithFormat: @"%d", count]];
+		
     }
     else if(count == 0)
     {
@@ -322,5 +340,6 @@ enum {
 
 int main(int argc, char *argv[])
 {
+	
     return NSApplicationMain(argc,  (const char **) argv);
 }
