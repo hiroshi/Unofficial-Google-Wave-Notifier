@@ -20,6 +20,13 @@ http://thatsmith.com/2009/10/google-wave-add-on-for-firefox
 I thank him.
 
 
+Notable Contributors
+---------------
+* Eugene Gordin - suggested use of Sparkle, an app auto update framework
+https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BZQ-P_AMqB
+* Jeff Leung - sent met pair of wave icons, blue and dark gray
+
+
 Notes for feature compatibility against Google Wave
 ---------------------------------------------------
 If they change the interface I use to access Google Wave, this app will fail.
