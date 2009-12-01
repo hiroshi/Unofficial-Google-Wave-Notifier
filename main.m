@@ -6,8 +6,8 @@
 //  Copyright yakitara.com 2009. All rights reserved.
 //
 #import <Cocoa/Cocoa.h>
-#import <Growl-WithInstaller/Growl.h>
-#import <Growl-WithInstaller/GrowlApplicationBridge.h>
+#import <Growl/Growl.h>
+#import <Growl/GrowlApplicationBridge.h>
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
 enum {
     MenuItemTagUnreadInsert = 1,
