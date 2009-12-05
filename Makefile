@@ -23,7 +23,3 @@ appcast:
             <pubDate>$(DATE)</pubDate>\n\
             <enclosure url=\"http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/$(ZIP)\" sparkle:version=\"$(VERSION)\" length=\"$(LENGTH)\" type=\"application/octet-stream\" sparkle:dsaSignature=\"$(DSA_SIGN)\" />\n\
          </item>"
-
-launch_service_test: launch_service_test.m
-	gcc -fobjc-gc -framework ApplicationServices -framework Cocoa -o $@ $@.m
-	./$@
