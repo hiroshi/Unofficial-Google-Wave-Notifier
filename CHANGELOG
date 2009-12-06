@@ -1,10 +1,13 @@
 = Change Log
 
+==
+* preferences: use web proxy settings on System Preferences (#issue/10)
+
 == 0.4.3 (2009-11-27)
-* color and gray icons [issue #2]
+* color and gray icons [#issue/2]
 
 == 0.4.2 (2009-11-24)
-* integrated with Sparkle self updater [issue #5 and #7]
+* integrated with Sparkle self updater [#issue/5 and 7]
 
 == 0.4.1 (2009-11-7)
 * Better error messages when login failed (in Colsole.app)

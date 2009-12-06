@@ -6,6 +6,8 @@
 //  Copyright yakitara.com 2009. All rights reserved.
 //
 #import <Cocoa/Cocoa.h>
+#import <SystemConfiguration/SCDynamicStoreCopySpecific.h>  // for getting web proxy settings
+
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
 enum {
     MenuItemTagUnreadInsert = 1,
@@ -29,6 +31,7 @@ enum {
 
 - (NSString *)password;
 - (void)setPassword:(NSString *)value;
+- (NSString *)webProxy;
 
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)goToInbox:(id)sender;
@@ -108,7 +111,15 @@ enum {
     NSFileHandle *handle = [pipe fileHandleForReading];
     [task setLaunchPath: pathToRuby];
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
-    [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, nil]];
+    NSString *proxy = [self webProxy];
+    if (proxy)
+    {
+        [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, @"-p", proxy, nil]];
+    }
+    else
+    {
+        [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, nil]];
+    }
     [task setStandardOutput: pipe];
     @try {
         [task launch];
@@ -279,6 +290,30 @@ enum {
             NSLog(@"SecKeychainAddGenericPassword: failed. (OSStatus: %d)\n", status); // FIXME: handle the errror
         }
     }
+}
+
+- (NSString*)webProxy
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey: @"UseWebProxy"])
+    {
+        CFDictionaryRef proxySettings = SCDynamicStoreCopyProxies((SCDynamicStoreRef)NULL);
+        //NSLog(@"proxySettings: %@", proxySettings);
+        NSURL *url = [NSURL URLWithString: @"https://wave.google.com/wave/"];
+        NSArray *proxies = (NSArray*)CFNetworkCopyProxiesForURL((CFURLRef)url, proxySettings);
+        //NSLog(@"proxies: %@", proxies);
+        for (NSDictionary *dict in proxies)
+        {
+            if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
+            {
+                NSString *proxy = [NSString stringWithFormat: @"%@:%@",
+                                            [dict objectForKey: @"kCFProxyHostNameKey"],
+                                            [dict objectForKey: @"kCFProxyPortNumberKey"]];
+                NSLog(@"proxy: %@\n", proxy);
+                return proxy;
+            }
+        }
+    }
+    return nil;
 }
 
 - (IBAction)openPreferences:(id)sender

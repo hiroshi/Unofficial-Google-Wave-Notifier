@@ -13,6 +13,7 @@
 		6832ADE710B96D91002BC3E2 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADE610B96D91002BC3E2 /* dsa_pub.pem */; };
 		6832ADF810B9939D002BC3E2 /* Updates By Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */; };
 		684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684366D91089F48B00D5DA11 /* Security.framework */; };
+		68492AD610CC073B006CF26E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68492AD510CC073B006CF26E /* SystemConfiguration.framework */; };
 		68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CD8D108D7DCB003A3A72 /* Defaults.plist */; };
 		68D4CDAD108DA7D4003A3A72 /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CDAC108DA7D4003A3A72 /* wave.png */; };
 		68F2EC9B10BEC4B8009C5A3D /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F2EC9910BEC4B8009C5A3D /* gray.png */; };
@@ -50,6 +51,7 @@
 		6832ADE610B96D91002BC3E2 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Sparkle/dsa_pub.pem; sourceTree = "<group>"; };
 		6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Updates By Sparkle.png"; path = "Sparkle/Updates By Sparkle.png"; sourceTree = "<group>"; };
 		684366D91089F48B00D5DA11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		68492AD510CC073B006CF26E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		68D4CD8D108D7DCB003A3A72 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		68D4CDAC108DA7D4003A3A72 /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
 		68F2EC9910BEC4B8009C5A3D /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */,
 				6832ADCA10B9330C002BC3E2 /* Sparkle.framework in Frameworks */,
+				68492AD610CC073B006CF26E /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +99,7 @@
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				68492AD510CC073B006CF26E /* SystemConfiguration.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";

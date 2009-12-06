@@ -47,6 +47,11 @@ That' it.
 I mean that the core part is written in ruby, so you can use it for windows or other (if ruby itself is not a problem).
 
 
+Note for you, a developer
+-------------------------
+* To debug proxy settings, you may use http://drikin.com/dolipo/
+
+
 License (MIT License)
 ---------------------
 Copyright (c) 2009 Hiroshi Saito
