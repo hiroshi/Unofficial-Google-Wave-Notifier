@@ -24,7 +24,12 @@ Notable Contributors
 ---------------
 * Eugene Gordin - suggested use of Sparkle, an app auto update framework
 https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BZQ-P_AMqB
+
 * Jeff Leung - sent met pair of wave icons, blue and dark gray
+
+* Mike Roest - implemented Growl support
+http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/issues#issue/6
+https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BJZsdijXOA
 
 
 Notes for feature compatibility against Google Wave
