@@ -24,8 +24,11 @@ Notable Contributors
 ---------------
 * Eugene Gordin - suggested use of Sparkle, an app auto update framework
 https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BZQ-P_AMqB
+
 * Jeff Leung - sent met pair of wave icons, blue and dark gray
 
+* w31rd0 - encourage me to implement web proxy support and test it
+http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/issues/#issue/10
 
 Notes for feature compatibility against Google Wave
 ---------------------------------------------------
