@@ -13,6 +13,7 @@
 		6832ADE710B96D91002BC3E2 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADE610B96D91002BC3E2 /* dsa_pub.pem */; };
 		6832ADF810B9939D002BC3E2 /* Updates By Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */; };
 		684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684366D91089F48B00D5DA11 /* Security.framework */; };
+		68492AD610CC073B006CF26E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68492AD510CC073B006CF26E /* SystemConfiguration.framework */; };
 		68D4CD8E108D7DCB003A3A72 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CD8D108D7DCB003A3A72 /* Defaults.plist */; };
 		68D4CDAD108DA7D4003A3A72 /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D4CDAC108DA7D4003A3A72 /* wave.png */; };
 		68F2EC9B10BEC4B8009C5A3D /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F2EC9910BEC4B8009C5A3D /* gray.png */; };
@@ -20,10 +21,9 @@
 		68F71BC010894B0100910DDB /* google-wave-notifier.rb in Resources */ = {isa = PBXBuildFile; fileRef = 68F71BBF10894B0100910DDB /* google-wave-notifier.rb */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		AD42A82810C020B6005674DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		AD42A83F10C02543005674DB /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = AD42A83110C0210B005674DB /* Growl Registration Ticket.growlRegDict */; };
-		ADD0D3F610C5BB6400C9B41D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD0D3F510C5BB6400C9B41D /* Growl.framework */; };
-		ADD0D3F910C5BB7400C9B41D /* Growl.framework in Copy bundle frameworks */ = {isa = PBXBuildFile; fileRef = ADD0D3F510C5BB6400C9B41D /* Growl.framework */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		ADA5705510CD44C200E0B02A /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA5705410CD44C200E0B02A /* Growl.framework */; };
+		ADA5705D10CD44CD00E0B02A /* Growl.framework in Copy bundle frameworks */ = {isa = PBXBuildFile; fileRef = ADA5705410CD44C200E0B02A /* Growl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				ADD0D3F910C5BB7400C9B41D /* Growl.framework in Copy bundle frameworks */,
+				ADA5705D10CD44CD00E0B02A /* Growl.framework in Copy bundle frameworks */,
 				6832ADE210B933B4002BC3E2 /* Sparkle.framework in Copy bundle frameworks */,
 			);
 			name = "Copy bundle frameworks";
@@ -54,6 +54,7 @@
 		6832ADE610B96D91002BC3E2 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Sparkle/dsa_pub.pem; sourceTree = "<group>"; };
 		6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Updates By Sparkle.png"; path = "Sparkle/Updates By Sparkle.png"; sourceTree = "<group>"; };
 		684366D91089F48B00D5DA11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		68492AD510CC073B006CF26E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		68D4CD8D108D7DCB003A3A72 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		68D4CDAC108DA7D4003A3A72 /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
 		68F2EC9910BEC4B8009C5A3D /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
@@ -61,8 +62,7 @@
 		68F71BBF10894B0100910DDB /* google-wave-notifier.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "google-wave-notifier.rb"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Unofficial Google Wave Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unofficial Google Wave Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD42A83110C0210B005674DB /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
-		ADD0D3F510C5BB6400C9B41D /* Growl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		ADA5705410CD44C200E0B02A /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +70,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				684366DA1089F48B00D5DA11 /* Security.framework in Frameworks */,
 				6832ADCA10B9330C002BC3E2 /* Sparkle.framework in Frameworks */,
-				AD42A82810C020B6005674DB /* Cocoa.framework in Frameworks */,
-				ADD0D3F610C5BB6400C9B41D /* Growl.framework in Frameworks */,
+				68492AD610CC073B006CF26E /* SystemConfiguration.framework in Frameworks */,
+				ADA5705510CD44C200E0B02A /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +93,7 @@
 			children = (
 				6832ADC910B9330C002BC3E2 /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				ADD0D3F510C5BB6400C9B41D /* Growl.framework */,
+				ADA5705410CD44C200E0B02A /* Growl.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -104,6 +105,7 @@
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				68492AD510CC073B006CF26E /* SystemConfiguration.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -140,7 +142,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AD42A83110C0210B005674DB /* Growl Registration Ticket.growlRegDict */,
 				68F2EC9910BEC4B8009C5A3D /* gray.png */,
 				68F2EC9A10BEC4B8009C5A3D /* color.png */,
 				6832ADF710B9939D002BC3E2 /* Updates By Sparkle.png */,
@@ -208,7 +209,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD42A83F10C02543005674DB /* Growl Registration Ticket.growlRegDict in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				68F71BC010894B0100910DDB /* google-wave-notifier.rb in Resources */,
@@ -306,7 +306,6 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
-				VALID_ARCHS = "i386 ppc x86_64";
 			};
 			name = Debug;
 		};
@@ -322,7 +321,6 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
-				VALID_ARCHS = "i386 ppc x86_64";
 			};
 			name = Release;
 		};

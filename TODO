@@ -15,7 +15,10 @@
 * preferences: alternative browser setting to default one (maybe Safari) for opening InBox and unread waves [#3]
 
 
-== Someday/maybe
+== Small bugs
+* unread waves menu items doesn't refresh at an error
+
+== Someday/maybe features
 * don't count currently editing wave as an unread
 
 * checking for online members
@@ -30,7 +33,6 @@
 * preferences: interval time for check (should limit minimum of 5 min)
 * preferences: alternative option for the number displayed at status bar (number of unread blips or unread waves)
 
-* support http proxy (if someone need it)
 * ESC key to close preferences window
 
 == Needed, but blocked

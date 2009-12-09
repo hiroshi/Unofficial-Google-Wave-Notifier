@@ -6,8 +6,8 @@ require "net/https"
 require "yaml"
 
 Net::HTTP.class_eval do
-  def self.ssl_new(uri)
-    http = Net::HTTP.new(uri.host, uri.port)
+  def self.ssl_new(uri, proxy_host=nil, proxy_port=nil)
+    http = Net::HTTP::Proxy(proxy_host, proxy_port).new(uri.host, uri.port)
     if uri.scheme == "https"  # enable SSL/TLS
       http.use_ssl = true 
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -65,8 +65,12 @@ module GoogleWave
       end
     end
 
-    def self.get_inbox(email, password)
-      notifier = Notifier.new
+    def initialize(options={})
+      @options = options
+    end
+
+    def self.get_inbox(email, password, options={})
+      notifier = Notifier.new(options)
       unless ARGV[2]
         notifier.login(email, password)
       end
@@ -75,7 +79,7 @@ module GoogleWave
 
     def login(email, password)
       uri = URI.parse('https://www.google.com/accounts/ClientLogin')
-      http = Net::HTTP.ssl_new(uri)
+      http = Net::HTTP.ssl_new(uri, @options[:proxy_host], @options[:proxy_port])
 
       header = {
         'Content-Type' => 'application/x-www-form-urlencoded',
@@ -102,7 +106,7 @@ module GoogleWave
     def get_inbox
       unless ARGV[2]
         uri = URI.parse('https://wave.google.com/wave/?nouacheck&auth=' + @login_info["Auth"])
-        http = Net::HTTP.ssl_new(uri)
+        http = Net::HTTP.ssl_new(uri, @options[:proxy_host], @options[:proxy_port])
 
         response_body = http.start do
           auth_res = http.request_get(uri.path + "?" + uri.query)
@@ -114,7 +118,7 @@ module GoogleWave
         end
       else
         uri = URI.parse('https://wave.google.com/wave/?nouacheck')
-        http = Net::HTTP.ssl_new(uri)
+        http = Net::HTTP.ssl_new(uri, @options[:proxy_host], @options[:proxy_port])
 
         response_body = http.start do
           res = http.request_get(uri.path + "?" + uri.query, {"cookie" => ARGV[2]})
@@ -128,13 +132,30 @@ end
 
 
 if $0 == __FILE__
+  require "optparse"
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = "usage: #{$0} [options] email password"
+    opts.separator ""
+    opts.separator "options:"
+    
+    opts.on("-p", "--proxy [HOST:PORT]") do |proxy|
+      options[:proxy_host], options[:proxy_port] = proxy.split(":")
+    end
+    
+    opts.on_tail("-h", "--help", "Show this message") do
+      puts opts
+      exit
+    end
+  end.parse!
+
   email, password = ARGV
   if !email || !password
     puts "usage:\n  #{$0} email password"
     exit 1
   end
 
-  inbox = GoogleWave::Notifier.get_inbox(email, password)
+  inbox = GoogleWave::Notifier.get_inbox(email, password, options)
   #p inbox.items
 
   # output unread items as a plist
