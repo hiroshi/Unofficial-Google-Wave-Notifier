@@ -1,17 +1,18 @@
 = TODO
 == Instruction for releasing new version
-0. commit task level modification before bump up to new version
-1. modify "Bundle version" in the Info.plist
-2. update CHANGELOG (maybe TODO too)
-3. `make zip appcast VERSION=X.X`
-4. copy & paste XML snipet insert into Sparkle/appcast.xml, the higher the newer
-5. upload the zip archive to github
-6. `git commit` changes and `git push` (publish appcast.xml)
-7. Check for update from the last version
-8. `git tag X.X` and `git push origin X.X`
+0. Commit task level modification before bump up to new version.
+1. Modify "Bundle version" in the Info.plist.
+2. Update CHANGELOG (maybe TODO too).
+3. Do `make zip VERSION=X.X`.
+4. Upload the zip archive to github.
+5. Notify the new version as a RC and wait for serious problem report.
+
+6. If you feel OK, do `make appcast VERSION=X.X` and paste XML snipet into Sparkle/appcast.xml.
+7. Do `git tag X.X`, `git commit -m "Bumped up to X.X"` and `git push master X.X`
+8. Check for update from the last version
 
 
-== 0.5?
+== 0.6?
 * preferences: alternative browser setting to default one (maybe Safari) for opening InBox and unread waves [#3]
 
 
@@ -19,7 +20,7 @@
 * unread waves menu items doesn't refresh at an error
 
 == Someday/maybe features
-* don't count currently editing wave as an unread
+* don't count currently editing wave by the user self as an unread
 
 * checking for online members
 * contains participant names in a title of unread item
