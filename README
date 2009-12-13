@@ -31,6 +31,11 @@ https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BZQ-P_AMqB
 http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/issues/#issue/10
 https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BbedDPRsTA
 
+* Mike Roest - implemented Growl support
+http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/issues#issue/6
+https://wave.google.com/wave/#restored:wave:googlewave.com!w%252BJZsdijXOA
+
+
 Notes for feature compatibility against Google Wave
 ---------------------------------------------------
 If they change the interface I use to access Google Wave, this app will fail.
