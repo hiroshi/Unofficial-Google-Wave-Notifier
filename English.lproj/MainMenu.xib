@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="550"/>
 			<integer value="452"/>
+			<integer value="550"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -478,7 +478,7 @@
 											</object>
 											<object class="NSButton" id="1032228131">
 												<reference key="NSNextResponder" ref="194244547"/>
-												<int key="NSvFlags">268</int>
+												<int key="NSvFlags">-2147483380</int>
 												<string key="NSFrame">{{15, 54}, {316, 18}}</string>
 												<reference key="NSSuperview" ref="194244547"/>
 												<bool key="NSEnabled">YES</bool>
@@ -525,10 +525,6 @@
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 			</object>
 			<object class="NSUserDefaultsController" id="582513699">
-				<object class="NSMutableArray" key="NSDeclaredKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>UseWebProxy</string>
-				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 			<object class="NSCustomObject" id="65605600">

@@ -294,23 +294,20 @@ enum {
 
 - (NSString*)webProxy
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey: @"UseWebProxy"])
+    CFDictionaryRef proxySettings = SCDynamicStoreCopyProxies((SCDynamicStoreRef)NULL);
+    //NSLog(@"proxySettings: %@", proxySettings);
+    NSURL *url = [NSURL URLWithString: @"https://wave.google.com/wave/"];
+    NSArray *proxies = (NSArray*)CFNetworkCopyProxiesForURL((CFURLRef)url, proxySettings);
+    //NSLog(@"proxies: %@", proxies);
+    for (NSDictionary *dict in proxies)
     {
-        CFDictionaryRef proxySettings = SCDynamicStoreCopyProxies((SCDynamicStoreRef)NULL);
-        //NSLog(@"proxySettings: %@", proxySettings);
-        NSURL *url = [NSURL URLWithString: @"https://wave.google.com/wave/"];
-        NSArray *proxies = (NSArray*)CFNetworkCopyProxiesForURL((CFURLRef)url, proxySettings);
-        //NSLog(@"proxies: %@", proxies);
-        for (NSDictionary *dict in proxies)
+        if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
         {
-            if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
-            {
-                NSString *proxy = [NSString stringWithFormat: @"%@:%@",
-                                            [dict objectForKey: @"kCFProxyHostNameKey"],
-                                            [dict objectForKey: @"kCFProxyPortNumberKey"]];
-                NSLog(@"proxy: %@\n", proxy);
-                return proxy;
-            }
+            NSString *proxy = [NSString stringWithFormat: @"%@:%@",
+                                        [dict objectForKey: @"kCFProxyHostNameKey"],
+                                        [dict objectForKey: @"kCFProxyPortNumberKey"]];
+            NSLog(@"use proxy: %@\n", proxy);
+            return proxy;
         }
     }
     return nil;
