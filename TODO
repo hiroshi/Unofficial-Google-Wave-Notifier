@@ -1,15 +1,14 @@
 = TODO
 == Instruction for releasing new version
 0. Commit task level modification before bump up to new version.
-1. Modify "Bundle version" in the Info.plist.
-2. Update CHANGELOG (maybe TODO too).
-3. Do `make zip VERSION=X.X`.
-4. Upload the zip archive to github.
-5. Notify the new version as a RC and wait for serious problem report.
+1. Modify "Bundle version" in the Info.plist and CHANGELOG (maybe TODO too).
+2. Do `make zip appcast VERSION=X.X` and paste XML snipet into Sparkle/appcast.xml.
+3. Upload the zip archive to github and notify the new version as a RC (and wait a day or two).
+4. Do `git commit -m "Bumped up to X.X"` and `git tag X.X`
 
-6. If you feel OK, do `make appcast VERSION=X.X` and paste XML snipet into Sparkle/appcast.xml.
-7. Do `git tag X.X`, `git commit -m "Bumped up to X.X"` and `git push master X.X`
-8. Check for update from the last version
+5. If you get a bug report, get back to '0' (version will be X.X.1)
+6. If you feel OK, do `git push master X.X[.X]` (publish Sparkle/appcast.xml)
+7. Test "Check for update"
 
 
 == 0.6?

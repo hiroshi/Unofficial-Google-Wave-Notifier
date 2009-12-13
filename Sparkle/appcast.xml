@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
-   <channel>
-      <title>Unofficial Google Wave Notifier - Releases</title>
-      <link>http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/Sparkle/appcast.xml</link>
-      <description>Most recent changes with links to updates.</description>
-      <language>en</language>
-        <item>
-            <title>Release 0.4.3</title>
-            <sparkle:releaseNotesLink>
-              http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
-            </sparkle:releaseNotesLink>
-            <pubDate>Fri, 27 Nov 2009 00:33:51 +0900</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.4.3.zip" sparkle:version="0.4.3" length="683937" type="application/octet-stream" sparkle:dsaSignature="MC4CFQDTWsdRYmBnMOTHNmkKjIPdMAhxzAIVALQIxgJwG8OpeaFqV18jz6+5on0E" />
-         </item>
-         <item>
-            <title>Release 0.4.2</title>
-            <sparkle:releaseNotesLink>
-              http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
-            </sparkle:releaseNotesLink>
-            <pubDate>Tue, 24 Nov 2009 01:23:47 +0900</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.4.2.zip" sparkle:version="0.4.2" length="676413" type="application/octet-stream" sparkle:dsaSignature="MCwCFBFaYcJUrZ0K5EQ71gxdpNESzm/dAhQ3glbKepMqHuIvkYg39H0mEcHqwg==" />
-         </item>
-   </channel>
+  <channel>
+    <title>Unofficial Google Wave Notifier - Releases</title>
+    <link>http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/Sparkle/appcast.xml</link>
+    <description>Most recent changes with links to updates.</description>
+    <language>en</language>
+    <item>
+      <title>Release 0.5</title>
+      <sparkle:releaseNotesLink>
+        http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
+      </sparkle:releaseNotesLink>
+      <pubDate>Sun, 13 Dec 2009 16:04:27 +0900</pubDate>
+      <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.5.zip" sparkle:version="0.5" length="1000806" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDrGSHeChsxWlPKyo7LMhJJ2TD00QIUdd+Zj1Kt1C4cW2f8Q9COq5/Luvo=" />
+    </item>
+    <item>
+      <title>Release 0.4.3</title>
+      <sparkle:releaseNotesLink>
+        http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
+      </sparkle:releaseNotesLink>
+      <pubDate>Fri, 27 Nov 2009 00:33:51 +0900</pubDate>
+      <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.4.3.zip" sparkle:version="0.4.3" length="683937" type="application/octet-stream" sparkle:dsaSignature="MC4CFQDTWsdRYmBnMOTHNmkKjIPdMAhxzAIVALQIxgJwG8OpeaFqV18jz6+5on0E" />
+    </item>
+    <item>
+      <title>Release 0.4.2</title>
+      <sparkle:releaseNotesLink>
+        http://github.com/hiroshi/Unofficial-Google-Wave-Notifier/raw/master/CHANGELOG
+      </sparkle:releaseNotesLink>
+      <pubDate>Tue, 24 Nov 2009 01:23:47 +0900</pubDate>
+      <enclosure url="http://cloud.github.com/downloads/hiroshi/Unofficial-Google-Wave-Notifier/unofficial-google-wave-notifier-mac-0.4.2.zip" sparkle:version="0.4.2" length="676413" type="application/octet-stream" sparkle:dsaSignature="MCwCFBFaYcJUrZ0K5EQ71gxdpNESzm/dAhQ3glbKepMqHuIvkYg39H0mEcHqwg==" />
+    </item>
+  </channel>
 </rss>
