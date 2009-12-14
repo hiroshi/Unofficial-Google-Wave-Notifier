@@ -4,13 +4,20 @@ LENGTH = $(shell ls -l build/Release/$(ZIP) | awk '{print $$5}')
 DSA_SIGN = $(shell ruby "Sparkle/Signing Tools/sign_update.rb" build/Release/$(ZIP) ~/Dropbox/private/Sparkle/dsa_priv.pem)
 DATE = $(shell date "+%a, %d %b %Y %H:%M:%S +0900")
 
-all:
+.PHONY : build
+
+all: build
+
+build:
 	xcodebuild -configuration Release build
+
+clean:
+	xcodebuild -configuration Release clean
 
 run:
 	open build/Release/$(APP)
 
-zip: all
+zip: clean build
 	(cd build/Release; rm -f $(ZIP); zip -r $(ZIP) $(APP))
 
 appcast:

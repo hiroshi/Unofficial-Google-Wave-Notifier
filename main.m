@@ -7,10 +7,9 @@
 //
 #import <Foundation/NSDictionary.h>
 #import <Cocoa/Cocoa.h>
+#import <SystemConfiguration/SCDynamicStoreCopySpecific.h>  // for getting web proxy settings
 #import <Growl/Growl.h>
 #import <Growl/GrowlApplicationBridge.h>
-#import <SystemConfiguration/SCDynamicStoreCopySpecific.h>  // for getting web proxy settings
-
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
 enum {
     MenuItemTagUnreadInsert = 1,
@@ -202,7 +201,7 @@ enum {
 				{
 					[GrowlApplicationBridge
 					 notifyWithTitle:[NSString stringWithFormat: @"New Wave for %@",waveName]
-					 description:[NSString stringWithFormat:@"%@ new Wave(s) have been received",[NSNumber numberWithInt:[unreadCount intValue]-[[growlNotified objectForKey:waveName] intValue]]]
+					 description:[NSString stringWithFormat:@"%@ new Waves have been received",[NSNumber numberWithInt:[unreadCount intValue]-[[growlNotified objectForKey:waveName] intValue]]]
 					 notificationName:@"NewWave"
 					 iconData: [NSData data]
 					 priority: (signed int)0
@@ -333,23 +332,20 @@ enum {
 
 - (NSString*)webProxy
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey: @"UseWebProxy"])
+    CFDictionaryRef proxySettings = SCDynamicStoreCopyProxies((SCDynamicStoreRef)NULL);
+    //NSLog(@"proxySettings: %@", proxySettings);
+    NSURL *url = [NSURL URLWithString: @"https://wave.google.com/wave/"];
+    NSArray *proxies = (NSArray*)CFNetworkCopyProxiesForURL((CFURLRef)url, proxySettings);
+    //NSLog(@"proxies: %@", proxies);
+    for (NSDictionary *dict in proxies)
     {
-        CFDictionaryRef proxySettings = SCDynamicStoreCopyProxies((SCDynamicStoreRef)NULL);
-        //NSLog(@"proxySettings: %@", proxySettings);
-        NSURL *url = [NSURL URLWithString: @"https://wave.google.com/wave/"];
-        NSArray *proxies = (NSArray*)CFNetworkCopyProxiesForURL((CFURLRef)url, proxySettings);
-        //NSLog(@"proxies: %@", proxies);
-        for (NSDictionary *dict in proxies)
+        if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
         {
-            if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
-            {
-                NSString *proxy = [NSString stringWithFormat: @"%@:%@",
-                                            [dict objectForKey: @"kCFProxyHostNameKey"],
-                                            [dict objectForKey: @"kCFProxyPortNumberKey"]];
-                NSLog(@"proxy: %@\n", proxy);
-                return proxy;
-            }
+            NSString *proxy = [NSString stringWithFormat: @"%@:%@",
+                                        [dict objectForKey: @"kCFProxyHostNameKey"],
+                                        [dict objectForKey: @"kCFProxyPortNumberKey"]];
+            NSLog(@"use proxy: %@\n", proxy);
+            return proxy;
         }
     }
     return nil;
