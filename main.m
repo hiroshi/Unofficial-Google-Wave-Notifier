@@ -24,6 +24,7 @@ enum {
     NSStatusItem *statusItem;
     NSDate *checkedDate;
 	NSMutableDictionary *growlNotified;
+	NSTimer *mainChecker;
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 
@@ -35,11 +36,11 @@ enum {
 - (NSString *)password;
 - (void)setPassword:(NSString *)value;
 - (NSString *)webProxy;
-
+- (void)closePreferences:(id)sender;
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)goToInbox:(id)sender;
 - (IBAction)goToWave:(id)sender;
-- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
+- (void) createMainTimer:(NSUserDefaults *) defaults;
 - (void) growlNotificationWasClicked:(id)clickContext;
 @end
 
@@ -62,7 +63,6 @@ enum {
     [statusItem setImage: [NSImage imageNamed: @"color.png"]];
     [statusItem setHighlightMode: YES];
     [statusItem setMenu: menu];
-	
     // check once first
     [self checkNotificationAsync: self];
     // schedule updateSinceChecked
@@ -72,19 +72,30 @@ enum {
 								   userInfo: nil
 									repeats: YES];
     // schedule checkNotification
-    [NSTimer scheduledTimerWithTimeInterval: 5.0 * 60 // TODO: preferences
-									 target: self
-								   selector: @selector(checkNotification:)
-								   userInfo: nil
-									repeats: YES];
+    [self createMainTimer: [NSUserDefaults standardUserDefaults]];
+	NSLog(@"LaunchComplete");
 }
-
+-(void) createMainTimer: (NSUserDefaults *) defaults
+{
+	[mainChecker invalidate];
+	mainChecker = [NSTimer scheduledTimerWithTimeInterval: [[defaults objectForKey:@"CheckIntervalMinutes"] doubleValue] * 60 // TODO: preferences
+												   target: self
+												 selector: @selector(checkNotification:)
+												 userInfo: nil
+												  repeats: YES];
+	
+}
+- (void)closePreferences:(id)sender 
+{
+	[preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
+	
+    [preferencesWindow performClose: sender];
+    	
+	[self createMainTimer:  [NSUserDefaults standardUserDefaults]];
+}
 - (void)checkNotificationAsync:(id)sender
 {
     // NOTE: Clicking button and performeClose will not end editing the first responder text field. So, force to end editing it.
-    [preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
-	
-    [preferencesWindow performClose: sender];
     [NSTimer scheduledTimerWithTimeInterval: 1.0
 									 target: self
 								   selector: @selector(checkNotification:)
@@ -121,7 +132,8 @@ enum {
     [task setLaunchPath: pathToRuby];
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
     NSString *proxy = [self webProxy];
-    if (proxy)
+	//Ensure that webproxying is turned on
+    if (proxy && [[defaults objectForKey:@"UseWebProxy"] boolValue])
     {
         [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, @"-p", proxy, nil]];
     }
@@ -372,16 +384,6 @@ enum {
 {
     NSString *url = [sender representedObject];
     [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
-}
-
-- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender
-{
-	//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	//    NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-    //[[defaultsController values] removeObjectForKey: @"PathToRuby"];
-    //[[defaultsController values] setNilValueForKey: @"PathToRuby"];
-    //[[defaultsController values] setValue: @"" forKey: @"PathToRuby"];
-	//    [[defaultsController defaults] removeObjectForKey: @"PathToRuby"];
 }
 
 // for Cocoa binding key path
