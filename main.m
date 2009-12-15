@@ -189,6 +189,7 @@ enum {
             {
 				NSString *waveName=  [item objectForKey: @"Title"];
 				NSNumber *unreadCount = [item objectForKey:@"Unread Count"];
+				NSLog(@"Adding %@ to foundWaves with Count %@",waveName,unreadCount);
 				[foundWaves setObject:unreadCount forKey: waveName];
 				NSString *url = [item objectForKey:@"URL"];
                 NSString *title = [NSString stringWithFormat: @"%@ (%@)", waveName , unreadCount];
@@ -199,6 +200,7 @@ enum {
 				if([growlNotified objectForKey:waveName] == nil ||
 				   unreadCount != nil && [[growlNotified objectForKey:waveName] compare:unreadCount] != NSOrderedSame)
 				{
+					NSLog(@"Growl Notifying: %@ - %@",waveName,unreadCount);
 					[GrowlApplicationBridge
 					 notifyWithTitle:[NSString stringWithFormat: @"New Wave for %@",waveName]
 					 description:[NSString stringWithFormat:@"%@ new Waves have been received",[NSNumber numberWithInt:[unreadCount intValue]-[[growlNotified objectForKey:waveName] intValue]]]
@@ -212,13 +214,17 @@ enum {
             }
 			NSArray* keys = [growlNotified allKeys];
 			for(id key in keys) {
+				NSLog(@"Key: %@ found in growlNotified with count %@",key,[growlNotified objectForKey:key]);
 				if([foundWaves objectForKey:key] == nil) {
+					NSLog(@"Removing Key %@ from growlNotified",key);
 					[growlNotified removeObjectForKey:key];
 				}
 			}
         }
 		else {
+			NSLog(@"Removed All Keys from growlNotified");
 			[growlNotified removeAllObjects];
+			
 		}
         NSLog(@"checkNotification: done. (total count: %d)\n", totalCount);
     }
