@@ -1,7 +1,16 @@
 = Change Log
 
-==
-* preferences: use web proxy settings on System Preferences (#issue/10)
+== The version numbering policy
+Major: I don't know when or how to get 1.
+| Major: Added new functionalities.
+| | Minor: Improving already existing functionalities.
+| | | Tiny: For small bugfix or something very tiny.
+| | | |
+0.4.3.1
+
+== 0.5 (2009-12-13)
+* Web proxy support (#issue/10)
+* Growl notification (#issue/6)
 
 == 0.4.3 (2009-11-27)
 * color and gray icons [#issue/2]
