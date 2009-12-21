@@ -36,10 +36,10 @@ enum {
 - (void)setPassword:(NSString *)value;
 - (NSString *)webProxy;
 
+- (void)closePreferences:(id)sender;
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)goToInbox:(id)sender;
 - (IBAction)goToWave:(id)sender;
-- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
 - (void) growlNotificationWasClicked:(id)clickContext;
 @end
 
@@ -79,13 +79,16 @@ enum {
 									repeats: YES];
 }
 
-- (void)checkNotificationAsync:(id)sender
+- (void)closePreferences:(id)sender 
 {
-    // NOTE: Clicking button and performeClose will not end editing the first responder text field. So, force to end editing it.
-    [preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
+	[preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
 	
     [preferencesWindow performClose: sender];
-    [NSTimer scheduledTimerWithTimeInterval: 1.0
+}
+
+- (void)checkNotificationAsync:(id)sender
+{
+       [NSTimer scheduledTimerWithTimeInterval: 1.0
 									 target: self
 								   selector: @selector(checkNotification:)
 								   userInfo: nil
@@ -121,7 +124,7 @@ enum {
     [task setLaunchPath: pathToRuby];
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
     NSString *proxy = [self webProxy];
-    if (proxy)
+    if (proxy && [[defaults objectForKey:@"UseWebProxy"] boolValue])
     {
         [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, @"-p", proxy, nil]];
     }
@@ -366,16 +369,6 @@ enum {
 {
     NSString *url = [sender representedObject];
     [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
-}
-
-- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender
-{
-	//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	//    NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-    //[[defaultsController values] removeObjectForKey: @"PathToRuby"];
-    //[[defaultsController values] setNilValueForKey: @"PathToRuby"];
-    //[[defaultsController values] setValue: @"" forKey: @"PathToRuby"];
-	//    [[defaultsController defaults] removeObjectForKey: @"PathToRuby"];
 }
 
 // for Cocoa binding key path
