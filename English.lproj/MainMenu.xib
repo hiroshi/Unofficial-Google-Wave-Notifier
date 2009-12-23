@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="510"/>
 			<integer value="452"/>
+			<integer value="580"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -325,14 +325,14 @@
 								<object class="NSTabViewItem" id="748338079">
 									<string key="NSIdentifier">Item 2</string>
 									<object class="NSView" key="NSView" id="416330084">
-										<nil key="NSNextResponder"/>
+										<reference key="NSNextResponder" ref="211998381"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
 											<object class="NSButton" id="472549830">
 												<reference key="NSNextResponder" ref="416330084"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{17, 28}, {144, 19}}</string>
+												<string key="NSFrame">{{17, 42}, {144, 19}}</string>
 												<reference key="NSSuperview" ref="416330084"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="735348064">
@@ -356,7 +356,7 @@
 											<object class="NSButton" id="930797664">
 												<reference key="NSNextResponder" ref="416330084"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 75}, {225, 18}}</string>
+												<string key="NSFrame">{{15, 89}, {225, 18}}</string>
 												<reference key="NSSuperview" ref="416330084"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="240122192">
@@ -366,7 +366,7 @@
 													<reference key="NSSupport" ref="54530365"/>
 													<reference key="NSControlView" ref="930797664"/>
 													<int key="NSButtonFlags">1211912703</int>
-													<int key="NSButtonFlags2">130</int>
+													<int key="NSButtonFlags2">2</int>
 													<object class="NSCustomResource" key="NSNormalImage" id="1005842543">
 														<string key="NSClassName">NSImage</string>
 														<string key="NSResourceName">NSSwitch</string>
@@ -395,7 +395,7 @@
 														<string>NeXT TIFF v4.0 pasteboard type</string>
 													</object>
 												</object>
-												<string key="NSFrame">{{260, 17}, {120, 39}}</string>
+												<string key="NSFrame">{{258, 31}, {120, 39}}</string>
 												<reference key="NSSuperview" ref="416330084"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSImageCell" key="NSCell" id="199569245">
@@ -413,7 +413,8 @@
 												<bool key="NSEditable">YES</bool>
 											</object>
 										</object>
-										<string key="NSFrame">{{10, 33}, {397, 94}}</string>
+										<string key="NSFrame">{{10, 33}, {395, 108}}</string>
+										<reference key="NSSuperview" ref="211998381"/>
 									</object>
 									<string key="NSLabel">Update</string>
 									<reference key="NSColor" ref="760747142"/>
@@ -422,7 +423,7 @@
 								<object class="NSTabViewItem" id="662857871">
 									<string key="NSIdentifier">2</string>
 									<object class="NSView" key="NSView" id="194244547">
-										<reference key="NSNextResponder" ref="211998381"/>
+										<nil key="NSNextResponder"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -492,7 +493,7 @@
 													<reference key="NSSupport" ref="54530365"/>
 													<reference key="NSControlView" ref="1032228131"/>
 													<int key="NSButtonFlags">1211912703</int>
-													<int key="NSButtonFlags2">130</int>
+													<int key="NSButtonFlags2">2</int>
 													<reference key="NSNormalImage" ref="1005842543"/>
 													<reference key="NSAlternateImage" ref="550807447"/>
 													<string key="NSAlternateContents"/>
@@ -503,21 +504,20 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 33}, {395, 108}}</string>
-										<reference key="NSSuperview" ref="211998381"/>
 									</object>
 									<string key="NSLabel">Advanced</string>
 									<reference key="NSColor" ref="760747142"/>
 									<reference key="NSTabView" ref="211998381"/>
 								</object>
 							</object>
-							<reference key="NSSelectedTabViewItem" ref="662857871"/>
+							<reference key="NSSelectedTabViewItem" ref="748338079"/>
 							<reference key="NSFont" ref="54530365"/>
 							<int key="NSTvFlags">0</int>
 							<bool key="NSAllowTruncatedLabels">YES</bool>
 							<bool key="NSDrawsBackground">YES</bool>
 							<object class="NSMutableArray" key="NSSubviews">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<reference ref="194244547"/>
+								<reference ref="416330084"/>
 							</object>
 						</object>
 					</object>
@@ -1180,9 +1180,9 @@
 					<string>{{264, 595}, {145, 103}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{176, 332}, {441, 217}}</string>
+					<string>{{176, 333}, {441, 217}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{176, 332}, {441, 217}}</string>
+					<string>{{176, 333}, {441, 217}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

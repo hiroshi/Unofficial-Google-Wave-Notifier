@@ -81,7 +81,8 @@ enum {
 
 - (void)closePreferences:(id)sender 
 {
-	[[NSUserDefaultsController sharedUserDefaultsController] save: sender];
+	NSUserDefaultsController* controller = [NSUserDefaultsController sharedUserDefaultsController];
+	[controller save: sender];
 	[preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
 	
     [preferencesWindow performClose: sender];
