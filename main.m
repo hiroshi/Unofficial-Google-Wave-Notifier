@@ -87,6 +87,8 @@ enum {
 }
 - (void)closePreferences:(id)sender 
 {
+	NSUserDefaultsController* controller = [NSUserDefaultsController sharedUserDefaultsController];
+	[controller save: sender];
 	[preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
 	
     [preferencesWindow performClose: sender];
@@ -133,7 +135,7 @@ enum {
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
     NSString *proxy = [self webProxy];
 	//Ensure that webproxying is turned on
-    if (proxy && [[defaults objectForKey:@"UseWebProxy"] boolValue])
+    if (proxy)
     {
         [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, @"-p", proxy, nil]];
     }
