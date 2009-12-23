@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="610"/>
 			<integer value="452"/>
+			<integer value="550"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -366,7 +366,7 @@
 													<reference key="NSSupport" ref="54530365"/>
 													<reference key="NSControlView" ref="930797664"/>
 													<int key="NSButtonFlags">1211912703</int>
-													<int key="NSButtonFlags2">130</int>
+													<int key="NSButtonFlags2">2</int>
 													<object class="NSCustomResource" key="NSNormalImage" id="1005842543">
 														<string key="NSClassName">NSImage</string>
 														<string key="NSResourceName">NSSwitch</string>
@@ -492,7 +492,7 @@
 													<reference key="NSSupport" ref="54530365"/>
 													<reference key="NSControlView" ref="1032228131"/>
 													<int key="NSButtonFlags">1211912703</int>
-													<int key="NSButtonFlags2">130</int>
+													<int key="NSButtonFlags2">2</int>
 													<reference key="NSNormalImage" ref="1005842543"/>
 													<reference key="NSAlternateImage" ref="550807447"/>
 													<string key="NSAlternateContents"/>
@@ -518,7 +518,8 @@
 																<bool key="EncodedWithXMLCoder">YES</bool>
 																<string>allowsFloats</string>
 																<string>formatterBehavior</string>
-																<string>locale</string>
+																<string>lenient</string>
+																<string>minimum</string>
 																<string>negativeInfinitySymbol</string>
 																<string>nilSymbol</string>
 																<string>numberStyle</string>
@@ -528,9 +529,8 @@
 																<bool key="EncodedWithXMLCoder">YES</bool>
 																<boolean value="YES"/>
 																<integer value="1040"/>
-																<object class="NSLocale">
-																	<string key="NS.identifier"/>
-																</object>
+																<boolean value="NO"/>
+																<real value="1"/>
 																<string>-∞</string>
 																<string/>
 																<integer value="1"/>
@@ -555,7 +555,8 @@
 																</object>
 															</object>
 														</object>
-														<object class="NSDecimalNumberPlaceholder" key="NS.min" id="516827384">
+														<real value="1" key="NS.min"/>
+														<object class="NSDecimalNumberPlaceholder" key="NS.max">
 															<int key="NS.exponent">0</int>
 															<int key="NS.length">0</int>
 															<bool key="NS.negative">YES</bool>
@@ -563,7 +564,6 @@
 															<int key="NS.mantissa.bo">1</int>
 															<bytes key="NS.mantissa">AAAAAAAAAAAAAAAAAAAAAA</bytes>
 														</object>
-														<reference key="NS.max" ref="516827384"/>
 														<object class="NSDecimalNumberHandler" key="NS.rounding">
 															<int key="NS.roundingmode">3</int>
 															<bool key="NS.raise.overflow">YES</bool>
@@ -573,7 +573,7 @@
 														<string key="NS.decimal">.</string>
 														<string key="NS.thousand">,</string>
 														<bool key="NS.hasthousands">YES</bool>
-														<bool key="NS.localized">NO</bool>
+														<bool key="NS.localized">YES</bool>
 														<bool key="NS.allowsfloats">YES</bool>
 													</object>
 													<reference key="NSControlView" ref="158700399"/>
@@ -1051,10 +1051,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="335405206"/>
 							<reference ref="1068952183"/>
-							<reference ref="158700399"/>
 							<reference ref="853885940"/>
 							<reference ref="1032228131"/>
 							<reference ref="523867402"/>
+							<reference ref="158700399"/>
 						</object>
 						<reference key="parent" ref="662857871"/>
 					</object>
