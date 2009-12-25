@@ -90,7 +90,7 @@ enum {
 
 - (void)checkNotificationAsync:(id)sender
 {
-       [NSTimer scheduledTimerWithTimeInterval: 1.0
+	[NSTimer scheduledTimerWithTimeInterval: 1.0
 									 target: self
 								   selector: @selector(checkNotification:)
 								   userInfo: nil
@@ -347,8 +347,8 @@ enum {
         if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
         {
             NSString *proxy = [NSString stringWithFormat: @"%@:%@",
-                                        [dict objectForKey: @"kCFProxyHostNameKey"],
-                                        [dict objectForKey: @"kCFProxyPortNumberKey"]];
+							   [dict objectForKey: @"kCFProxyHostNameKey"],
+							   [dict objectForKey: @"kCFProxyPortNumberKey"]];
             NSLog(@"use proxy: %@\n", proxy);
             return proxy;
         }
