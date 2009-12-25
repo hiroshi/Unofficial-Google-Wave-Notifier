@@ -92,7 +92,7 @@ enum {
 	[preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
 	
     [preferencesWindow performClose: sender];
-    	
+	
 	[self createMainTimer:  [NSUserDefaults standardUserDefaults]];
 }
 - (void)checkNotificationAsync:(id)sender
@@ -362,8 +362,8 @@ enum {
         if ([[dict objectForKey: @"kCFProxyTypeKey"] isEqualToString: @"kCFProxyTypeHTTPS"])
         {
             NSString *proxy = [NSString stringWithFormat: @"%@:%@",
-                                        [dict objectForKey: @"kCFProxyHostNameKey"],
-                                        [dict objectForKey: @"kCFProxyPortNumberKey"]];
+							   [dict objectForKey: @"kCFProxyHostNameKey"],
+							   [dict objectForKey: @"kCFProxyPortNumberKey"]];
             NSLog(@"use proxy: %@\n", proxy);
             return proxy;
         }
