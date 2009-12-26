@@ -15,6 +15,7 @@
 == 0.6?
 * preferences: alternative browser setting to default one (maybe Safari) for opening InBox and unread waves [#3]
 * BUGFIX: apostrophes in unread wave menu item is escaped as \u0027 [#12]
+* BUGFIX: the Preferences window should not hide Sparkle's windows
 
 == Small bugs
 * unread waves menu items doesn't refresh at an error
