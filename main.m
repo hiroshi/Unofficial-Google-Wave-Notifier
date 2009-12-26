@@ -125,8 +125,8 @@ enum {
     NSFileHandle *handle = [pipe fileHandleForReading];
     [task setLaunchPath: pathToRuby];
     NSString *rbPath = [[NSBundle mainBundle] pathForResource: @"google-wave-notifier" ofType: @"rb"];
-    NSString *proxy = [self webProxy];
-    if (proxy && [[defaults objectForKey:@"UseWebProxy"] boolValue])
+    NSString *proxy = [[defaults objectForKey:@"UseWebProxy"] boolValue] ? [self webProxy] : nil;
+    if (proxy)
     {
         [task setArguments: [NSArray arrayWithObjects: rbPath, email, password, @"-p", proxy, nil]];
     }
