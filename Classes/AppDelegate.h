@@ -7,7 +7,7 @@
     IBOutlet id preferencesWindow;
     NSStatusItem *statusItem;
     NSDate *checkedDate;
-	NSMutableDictionary *growlNotified;
+    NSMutableDictionary *growlNotified;
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 

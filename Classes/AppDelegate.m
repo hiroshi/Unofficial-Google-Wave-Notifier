@@ -15,11 +15,11 @@ enum {
 @implementation AppDelegate
 - (void)growlNotificationWasClicked:(id)clickContext
 {
-	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: clickContext]];	
+    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: clickContext]];
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	[GrowlApplicationBridge setGrowlDelegate:self];
+    [GrowlApplicationBridge setGrowlDelegate:self];
     // defaults
     NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Defaults" ofType: @"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultsDict];
@@ -31,41 +31,41 @@ enum {
     [statusItem setImage: [NSImage imageNamed: @"color.png"]];
     [statusItem setHighlightMode: YES];
     [statusItem setMenu: menu];
-	
+    
     // check once first
     [self checkNotificationAsync: self];
     // schedule updateSinceChecked
     [NSTimer scheduledTimerWithTimeInterval: 60
-									 target: self
-								   selector: @selector(updateSinceChecked:)
-								   userInfo: nil
-									repeats: YES];
+                                     target: self
+                                   selector: @selector(updateSinceChecked:)
+                                   userInfo: nil
+                                    repeats: YES];
     // schedule checkNotification
     [NSTimer scheduledTimerWithTimeInterval: 5.0 * 60 // TODO: preferences
-									 target: self
-								   selector: @selector(checkNotification:)
-								   userInfo: nil
-									repeats: YES];
+                                     target: self
+                                   selector: @selector(checkNotification:)
+                                   userInfo: nil
+                                    repeats: YES];
 }
 
 - (void)checkNotificationAsync:(id)sender
 {
     // NOTE: Clicking button and performeClose will not end editing the first responder text field. So, force to end editing it.
     [preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
-	
+    
     [preferencesWindow performClose: sender];
     [NSTimer scheduledTimerWithTimeInterval: 1.0
-									 target: self
-								   selector: @selector(checkNotification:)
-								   userInfo: nil
-									repeats: NO];
+                                     target: self
+                                   selector: @selector(checkNotification:)
+                                   userInfo: nil
+                                    repeats: NO];
 }
 
 - (void)checkNotification:(NSTimer*)theTimer
 {
     checkedDate = [NSDate dateWithTimeIntervalSinceNow: -2.0]; // ensure that first call of scheduled updateSinceChecked is called a minutes later
     [self updateSinceChecked: NULL];
-	
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // first of all, check keychain for password
     NSString *email = [defaults objectForKey: @"Email"];
@@ -81,7 +81,7 @@ enum {
         return;
     }
     //NSLog(@"e: %@, p: %@\n", email, password);
-	
+    
     NSString *pathToRuby = [defaults objectForKey: @"PathToRuby"];
     NSLog(@"checkNotification: start. (pathToRuby: %@)\n", pathToRuby);
     NSTask *task = [[NSTask alloc] init];
@@ -108,7 +108,7 @@ enum {
         [self updateStatusItemWithCount: -1];
         return;
     }
-	
+    
     NSData *data = [handle readDataToEndOfFile];
     //NSLog([[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding]);
     //NSLog(@"\n");
@@ -118,13 +118,13 @@ enum {
         [self updateStatusItemWithCount: -1];
         return;
     }
-	
+    
     NSString *errorString = nil;
     NSPropertyListFormat format;
     id plist = [NSPropertyListSerialization propertyListFromData: data 
-												mutabilityOption: NSPropertyListImmutable
-														  format: &format
-												errorDescription: &errorString];
+                                                mutabilityOption: NSPropertyListImmutable
+                                                          format: &format
+                                                errorDescription: &errorString];
     if (errorString)
     {
         NSLog(@"checkNotification: failed. error: %@\n", *errorString);
@@ -153,42 +153,42 @@ enum {
             //   unread waves
             NSEnumerator *enumerator = [[plist objectForKey: @"Items"] objectEnumerator];
             NSDictionary *item = nil;
-			NSMutableDictionary *foundWaves = [NSMutableDictionary dictionaryWithCapacity:0]; 
+            NSMutableDictionary *foundWaves = [NSMutableDictionary dictionaryWithCapacity:0]; 
             while (item = [enumerator nextObject])
             {
-				NSString *waveName=  [item objectForKey: @"Title"];
-				NSNumber *unreadCount = [item objectForKey:@"Unread Count"];
-				[foundWaves setObject:unreadCount forKey: waveName];
-				NSString *url = [item objectForKey:@"URL"];
+                NSString *waveName=  [item objectForKey: @"Title"];
+                NSNumber *unreadCount = [item objectForKey:@"Unread Count"];
+                [foundWaves setObject:unreadCount forKey: waveName];
+                NSString *url = [item objectForKey:@"URL"];
                 NSString *title = [NSString stringWithFormat: @"%@ (%@)", waveName , unreadCount];
                 NSMenuItem *menuItem = [menu insertItemWithTitle: title action: @selector(goToWave:) keyEquivalent: @"" atIndex: insertIndex];
                 [menuItem setRepresentedObject: url];
                 [menuItem setTag: MenuItemTagUnread];
-				
-				if([growlNotified objectForKey:waveName] == nil ||
-				   unreadCount != nil && [[growlNotified objectForKey:waveName] compare:unreadCount] != NSOrderedSame)
-				{
-					[GrowlApplicationBridge
-					 notifyWithTitle:[NSString stringWithFormat: @"New Wave for %@",waveName]
-					 description:[NSString stringWithFormat:@"%@ new Waves have been received",[NSNumber numberWithInt:[unreadCount intValue]-[[growlNotified objectForKey:waveName] intValue]]]
-					 notificationName:@"NewWave"
-					 iconData: [NSData data]
-					 priority: (signed int)0
-					 isSticky: FALSE
-					 clickContext: url];
-					[growlNotified setObject:unreadCount forKey:waveName];
-				}
+                
+                if([growlNotified objectForKey:waveName] == nil ||
+                   unreadCount != nil && [[growlNotified objectForKey:waveName] compare:unreadCount] != NSOrderedSame)
+                {
+                    [GrowlApplicationBridge
+                     notifyWithTitle:[NSString stringWithFormat: @"New Wave for %@",waveName]
+                     description:[NSString stringWithFormat:@"%@ new Waves have been received",[NSNumber numberWithInt:[unreadCount intValue]-[[growlNotified objectForKey:waveName] intValue]]]
+                     notificationName:@"NewWave"
+                     iconData: [NSData data]
+                     priority: (signed int)0
+                     isSticky: FALSE
+                     clickContext: url];
+                    [growlNotified setObject:unreadCount forKey:waveName];
+                }
             }
-			NSArray* keys = [growlNotified allKeys];
-			for(id key in keys) {
-				if([foundWaves objectForKey:key] == nil) {
-					[growlNotified removeObjectForKey:key];
-				}
-			}
+            NSArray* keys = [growlNotified allKeys];
+            for(id key in keys) {
+                if([foundWaves objectForKey:key] == nil) {
+                    [growlNotified removeObjectForKey:key];
+                }
+            }
         }
-		else {
-			[growlNotified removeAllObjects];
-		}
+        else {
+            [growlNotified removeAllObjects];
+        }
         NSLog(@"checkNotification: done. (total count: %d)\n", totalCount);
     }
 }
@@ -200,7 +200,7 @@ enum {
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString: @"Check Now" attributes: attrs];
     [attrs setObject: [NSColor grayColor] forKey: NSForegroundColorAttributeName];
     [attrs setObject: [NSFont menuBarFontOfSize: [font pointSize] - 2] forKey: NSFontAttributeName];
-	
+    
     NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate: checkedDate];
     NSLog(@"updateSinceChecked: seconds: %f", seconds);
     NSString *appendTitle = NULL;
@@ -227,7 +227,7 @@ enum {
     {
         [statusItem setImage: [NSImage imageNamed: @"color.png"]];
         [statusItem setTitle: [NSString stringWithFormat: @"%d", count]];
-		
+        
     }
     else if(count == 0)
     {
@@ -249,15 +249,15 @@ enum {
         void *passwordData;
         UInt32 passwordLength;
         OSStatus status = SecKeychainFindGenericPassword(
-														 NULL,           // default keychain
-														 strlen(SERVICE_NAME),             // length of service name
-														 SERVICE_NAME,   // service name
-														 [email lengthOfBytesUsingEncoding: NSUTF8StringEncoding], // length of account name
-														 [email UTF8String],   // account name
-														 &passwordLength,  // length of password
-														 &passwordData,   // pointer to password data
-														 NULL // the item reference
-														 );
+                                                         NULL,           // default keychain
+                                                         strlen(SERVICE_NAME),             // length of service name
+                                                         SERVICE_NAME,   // service name
+                                                         [email lengthOfBytesUsingEncoding: NSUTF8StringEncoding], // length of account name
+                                                         [email UTF8String],   // account name
+                                                         &passwordLength,  // length of password
+                                                         &passwordData,   // pointer to password data
+                                                         NULL // the item reference
+                                                         );
         if (status != noErr)
         {
             NSLog(@"SecKeychainFindGenericPassword: failed. (OSStatus: %d)\n", status); // FIXME: handle the errror
@@ -283,15 +283,15 @@ enum {
     if (email)
     {
         OSStatus status = SecKeychainAddGenericPassword (
-														 NULL,           // default keychain
-														 strlen(SERVICE_NAME),             // length of service name
-														 SERVICE_NAME,   // service name
-														 [email lengthOfBytesUsingEncoding: NSUTF8StringEncoding], // length of account name
-														 [email UTF8String],   // account name
-														 [value lengthOfBytesUsingEncoding: NSUTF8StringEncoding], // length of password
-														 [value UTF8String],   // password
-														 NULL
-														 );
+                                                         NULL,           // default keychain
+                                                         strlen(SERVICE_NAME),             // length of service name
+                                                         SERVICE_NAME,   // service name
+                                                         [email lengthOfBytesUsingEncoding: NSUTF8StringEncoding], // length of account name
+                                                         [email UTF8String],   // account name
+                                                         [value lengthOfBytesUsingEncoding: NSUTF8StringEncoding], // length of password
+                                                         [value UTF8String],   // password
+                                                         NULL
+                                                         );
         if (status != noErr)
         {
             NSLog(@"SecKeychainAddGenericPassword: failed. (OSStatus: %d)\n", status); // FIXME: handle the errror
@@ -339,12 +339,12 @@ enum {
 
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender
 {
-	//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	//    NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
     //[[defaultsController values] removeObjectForKey: @"PathToRuby"];
     //[[defaultsController values] setNilValueForKey: @"PathToRuby"];
     //[[defaultsController values] setValue: @"" forKey: @"PathToRuby"];
-	//    [[defaultsController defaults] removeObjectForKey: @"PathToRuby"];
+    //    [[defaultsController defaults] removeObjectForKey: @"PathToRuby"];
 }
 
 // for Cocoa binding key path
