@@ -19,6 +19,7 @@
 		68F2EC9B10BEC4B8009C5A3D /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F2EC9910BEC4B8009C5A3D /* gray.png */; };
 		68F2EC9C10BEC4B8009C5A3D /* color.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F2EC9A10BEC4B8009C5A3D /* color.png */; };
 		68F71BC010894B0100910DDB /* google-wave-notifier.rb in Resources */ = {isa = PBXBuildFile; fileRef = 68F71BBF10894B0100910DDB /* google-wave-notifier.rb */; };
+		68FD558110EED9810029D572 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FD558010EED9810029D572 /* AppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		AD42A82810C020B6005674DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -61,6 +62,8 @@
 		68F2EC9910BEC4B8009C5A3D /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		68F2EC9A10BEC4B8009C5A3D /* color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color.png; sourceTree = "<group>"; };
 		68F71BBF10894B0100910DDB /* google-wave-notifier.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "google-wave-notifier.rb"; sourceTree = "<group>"; };
+		68FD557F10EED9810029D572 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		68FD558010EED9810029D572 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Unofficial Google Wave Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unofficial Google Wave Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD42A83110C0210B005674DB /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
@@ -86,8 +89,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				68FD557F10EED9810029D572 /* AppDelegate.h */,
+				68FD558010EED9810029D572 /* AppDelegate.m */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -233,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				68FD558110EED9810029D572 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +313,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ./Classes;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
@@ -323,6 +330,7 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ./Classes;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
