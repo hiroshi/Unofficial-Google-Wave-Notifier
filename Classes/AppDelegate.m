@@ -12,6 +12,8 @@ enum {
     MenuItemTagCheckNow = 3,
 };
 
+extern NSString *WaveClientBundleIDKey;
+
 @implementation AppDelegate
 - (void)growlNotificationWasClicked:(id)clickContext
 {
@@ -328,13 +330,39 @@ enum {
 
 - (IBAction)goToInbox:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://wave.google.com/wave/"]];
+	NSURL *waveURL = [NSURL URLWithString: @"https://wave.google.com/wave/"];
+	[self launchBrowserWithURL:waveURL];
 }
 
 - (IBAction)goToWave:(id)sender
 {
-    NSString *url = [sender representedObject];
-    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
+    NSString *waveURLString = [sender representedObject];
+	NSURL *waveURL = [NSURL URLWithString: waveURLString];
+	
+	[self launchBrowserWithURL:waveURL];
+}
+
+-(void)launchBrowserWithURL:(NSURL *)url
+{
+	NSString *bundleId = [[NSUserDefaults standardUserDefaults] objectForKey:WaveClientBundleIDKey];
+	BOOL browserDidLaunch = NO;
+	
+	if(bundleId)
+	{
+		browserDidLaunch = [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
+                                           withAppBundleIdentifier:bundleId
+                                                           options:NSWorkspaceLaunchDefault
+                                    additionalEventParamDescriptor:nil 
+                                                 launchIdentifiers:nil];		
+	}
+	else 
+	{
+		browserDidLaunch = [[NSWorkspace sharedWorkspace] openURL:url];
+	}
+	
+	if(!browserDidLaunch)
+		NSLog(@"Failed to launch URL: %@ bundleId: %@ ", url, bundleId);
+	
 }
 
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender

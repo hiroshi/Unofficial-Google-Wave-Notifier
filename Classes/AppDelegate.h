@@ -25,4 +25,6 @@
 - (IBAction)goToWave:(id)sender;
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
 - (void) growlNotificationWasClicked:(id)clickContext;
+- (void)launchBrowserWithURL:(NSURL *)url;
+
 @end
