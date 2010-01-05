@@ -49,7 +49,7 @@ enum {
 -(void) createMainTimer: (NSUserDefaults *) defaults
 {
 	[mainChecker invalidate];
-	mainChecker = [NSTimer scheduledTimerWithTimeInterval: [[defaults objectForKey:@"CheckIntervalMinutes"] doubleValue] * 60 // TODO: preferences
+	mainChecker = [NSTimer scheduledTimerWithTimeInterval: [[defaults objectForKey:@"CheckIntervalMinutes"] doubleValue] * 60
 												   target: self
 												 selector: @selector(checkNotification:)
 												 userInfo: nil
