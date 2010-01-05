@@ -41,11 +41,30 @@ enum {
                                    userInfo: nil
                                     repeats: YES];
     // schedule checkNotification
-    [NSTimer scheduledTimerWithTimeInterval: 5.0 * 60 // TODO: preferences
-                                     target: self
-                                   selector: @selector(checkNotification:)
-                                   userInfo: nil
-                                    repeats: YES];
+    [self createMainTimer: [NSUserDefaults standardUserDefaults]];
+	NSLog(@"LaunchComplete");
+}
+
+
+-(void) createMainTimer: (NSUserDefaults *) defaults
+{
+	[mainChecker invalidate];
+	mainChecker = [NSTimer scheduledTimerWithTimeInterval: [[defaults objectForKey:@"CheckIntervalMinutes"] doubleValue] * 60 // TODO: preferences
+												   target: self
+												 selector: @selector(checkNotification:)
+												 userInfo: nil
+												  repeats: YES];
+	
+}
+- (void)closePreferences:(id)sender 
+{
+	NSUserDefaultsController* controller = [NSUserDefaultsController sharedUserDefaultsController];
+	[controller save: sender];
+	[preferencesWindow endEditingFor: [preferencesWindow firstResponder]];
+	
+    [preferencesWindow performClose: sender];
+	
+	[self createMainTimer:  [NSUserDefaults standardUserDefaults]];
 }
 
 - (void)checkNotificationAsync:(id)sender
@@ -335,16 +354,6 @@ enum {
 {
     NSString *url = [sender representedObject];
     [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
-}
-
-- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender
-{
-    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //    NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-    //[[defaultsController values] removeObjectForKey: @"PathToRuby"];
-    //[[defaultsController values] setNilValueForKey: @"PathToRuby"];
-    //[[defaultsController values] setValue: @"" forKey: @"PathToRuby"];
-    //    [[defaultsController defaults] removeObjectForKey: @"PathToRuby"];
 }
 
 // for Cocoa binding key path

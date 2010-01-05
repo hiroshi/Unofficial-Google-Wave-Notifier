@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="452"/>
 			<integer value="459"/>
+			<integer value="452"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -481,7 +481,7 @@
 											</object>
 											<object class="NSButton" id="1032228131">
 												<reference key="NSNextResponder" ref="194244547"/>
-												<int key="NSvFlags">268</int>
+												<int key="NSvFlags">-2147483380</int>
 												<string key="NSFrame">{{15, 29}, {316, 18}}</string>
 												<reference key="NSSuperview" ref="194244547"/>
 												<bool key="NSEnabled">YES</bool>
@@ -1052,9 +1052,9 @@
 							<reference ref="335405206"/>
 							<reference ref="1068952183"/>
 							<reference ref="853885940"/>
-							<reference ref="1032228131"/>
 							<reference ref="158700399"/>
 							<reference ref="523867402"/>
+							<reference ref="1032228131"/>
 						</object>
 						<reference key="parent" ref="662857871"/>
 					</object>
@@ -1473,6 +1473,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
 					<string key="className">AppDelegate</string>
+					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -1480,10 +1481,12 @@
 							<string>checkNotificationAsync:</string>
 							<string>closePreferences:</string>
 							<string>goToInbox:</string>
+							<string>goToWave:</string>
 							<string>openPreferences:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1503,6 +1506,14 @@
 							<string>id</string>
 						</object>
 					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/AppDelegate.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">AppDelegate</string>
+					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>

@@ -8,6 +8,7 @@
     NSStatusItem *statusItem;
     NSDate *checkedDate;
     NSMutableDictionary *growlNotified;
+	NSTimer *mainChecker;
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 
@@ -20,9 +21,10 @@
 - (void)setPassword:(NSString *)value;
 - (NSString *)webProxy;
 
-- (IBAction)openPreferences:(id)sender;
-- (IBAction)goToInbox:(id)sender;
+- (void)closePreferences:(id)sender;
+- (IBAction)openPreferences:(id)sender;- (IBAction)goToInbox:(id)sender;
 - (IBAction)goToWave:(id)sender;
-- (IBAction)resetAdvancedPreferencesToDefaults:(id)sender;
+- (IBAction)goToInbox:(id)sender;
+- (void) createMainTimer:(NSUserDefaults *) defaults;
 - (void) growlNotificationWasClicked:(id)clickContext;
 @end
