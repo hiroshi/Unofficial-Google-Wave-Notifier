@@ -10,7 +10,7 @@
 extern NSString *WaveClientBundleIDKey;
 
 @interface SettingsWindowController : NSWindowController {
-	NSPopUpButton *waveClientPopUpButton;
+    NSPopUpButton *waveClientPopUpButton;
     NSArray *appBundleIds;
 }
 

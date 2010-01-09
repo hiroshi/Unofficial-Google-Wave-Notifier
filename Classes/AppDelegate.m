@@ -330,39 +330,39 @@ extern NSString *WaveClientBundleIDKey;
 
 - (IBAction)goToInbox:(id)sender
 {
-	NSURL *waveURL = [NSURL URLWithString: @"https://wave.google.com/wave/"];
-	[self launchBrowserWithURL:waveURL];
+    NSURL *waveURL = [NSURL URLWithString: @"https://wave.google.com/wave/"];
+    [self launchBrowserWithURL:waveURL];
 }
 
 - (IBAction)goToWave:(id)sender
 {
     NSString *waveURLString = [sender representedObject];
-	NSURL *waveURL = [NSURL URLWithString: waveURLString];
-	
-	[self launchBrowserWithURL:waveURL];
+    NSURL *waveURL = [NSURL URLWithString: waveURLString];
+    
+    [self launchBrowserWithURL:waveURL];
 }
 
 -(void)launchBrowserWithURL:(NSURL *)url
 {
-	NSString *bundleId = [[NSUserDefaults standardUserDefaults] objectForKey:WaveClientBundleIDKey];
-	BOOL browserDidLaunch = NO;
-	
-	if(bundleId)
-	{
-		browserDidLaunch = [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
+    NSString *bundleId = [[NSUserDefaults standardUserDefaults] objectForKey:WaveClientBundleIDKey];
+    BOOL browserDidLaunch = NO;
+    
+    if(bundleId)
+    {
+        browserDidLaunch = [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
                                            withAppBundleIdentifier:bundleId
                                                            options:NSWorkspaceLaunchDefault
                                     additionalEventParamDescriptor:nil 
-                                                 launchIdentifiers:nil];		
-	}
-	else 
-	{
-		browserDidLaunch = [[NSWorkspace sharedWorkspace] openURL:url];
-	}
-	
-	if(!browserDidLaunch)
-		NSLog(@"Failed to launch URL: %@ bundleId: %@ ", url, bundleId);
-	
+                                                 launchIdentifiers:nil];        
+    }
+    else 
+    {
+        browserDidLaunch = [[NSWorkspace sharedWorkspace] openURL:url];
+    }
+    
+    if(!browserDidLaunch)
+        NSLog(@"Failed to launch URL: %@ bundleId: %@ ", url, bundleId);
+    
 }
 
 - (IBAction)resetAdvancedPreferencesToDefaults:(id)sender
