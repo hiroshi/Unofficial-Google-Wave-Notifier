@@ -7,7 +7,7 @@
 //
 
 #import "SettingsWindowController.h"
-NSString *WaveClientBundleIDKey = @"WaveClientBundleID";
+#import "AppConstants.h"
 
 @implementation SettingsWindowController
 @synthesize waveClientPopUpButton;

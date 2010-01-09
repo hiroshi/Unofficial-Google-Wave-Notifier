@@ -4,6 +4,7 @@
 #import <Growl/Growl.h>
 #import <Growl/GrowlApplicationBridge.h>
 #import <AppDelegate.h>
+#import <AppConstants.h>
 
 #define SERVICE_NAME "Unofficial Google Wave Notifier" // FIXME: get from app
 enum {
@@ -11,8 +12,6 @@ enum {
     MenuItemTagUnread = 2,
     MenuItemTagCheckNow = 3,
 };
-
-extern NSString *WaveClientBundleIDKey;
 
 @implementation AppDelegate
 - (void)growlNotificationWasClicked:(id)clickContext

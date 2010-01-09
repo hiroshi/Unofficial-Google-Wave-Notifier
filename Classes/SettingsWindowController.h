@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-extern NSString *WaveClientBundleIDKey;
 
 @interface SettingsWindowController : NSWindowController {
     NSPopUpButton *waveClientPopUpButton;
